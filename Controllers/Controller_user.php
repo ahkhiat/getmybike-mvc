@@ -38,7 +38,8 @@ class Controller_user extends Controller
     public function action_user_profile()
     {
         $m=User::get_model();
-        $data=['user'=>$m->get_user_profile()];
+        $data=['user'=>$m->get_user_profile(),
+               'proprietaire'=>$m->get_proprietaire()];
         $this->render("user_profile", $data);
     }
 
@@ -61,19 +62,21 @@ class Controller_user extends Controller
         $m=User::get_model();
         $user = $m->get_public_profile();
         
-        $lastActivityTimestamp = strtotime($user['user_info'][0]->lastActivityTime);
+        $lastActivityTimestamp = strtotime($user[0]->lastActivityTime);
         $currentTimestamp = time();
         $timeDifference = $currentTimestamp - $lastActivityTimestamp;
 
-        $user['user_info'][0]->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
+        $user[0]->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
 
 
         $data=[
             // 'user'=>$m->get_public_profile(),
                 'user'=>$user,
-                'followers'=>$m->get_followers_number_public(),
-               'followed'=>$m->get_followed_number_public(),
-               'isFollowing'=>$m->get_is_following()];
+                'age'=>$m->get_age()
+            //     'followers'=>$m->get_followers_number_public(),
+            //    'followed'=>$m->get_followed_number_public(),
+            //    'isFollowing'=>$m->get_is_following()
+            ];
         $this->
         render("public_profile", $data);
     }
@@ -83,7 +86,7 @@ class Controller_user extends Controller
 
         if(isset($_FILES["img_input"]["name"])){
             $user_id = $_POST["user_id"];
-            $username = $_POST["username"];
+            $nom = $_POST["nom"];
 
             $imageName = $_FILES["img_input"]["name"];
             $imageSize = $_FILES["img_input"]["size"];
@@ -129,6 +132,7 @@ class Controller_user extends Controller
     
                 if ($imageSize > $maxFileSize) {
                     $image = new Imagick($tmpName);
+                    // Imagick fonctionne si le site est déployé, ne fonctionne pas en local
 
                     if($this->isMobileImage($image)) {
                         $image->trimImage(0);
@@ -137,12 +141,12 @@ class Controller_user extends Controller
                     $compressionQuality = 80; // Qualité de compression (entre 0 et 100)
                     $image->setImageCompressionQuality($compressionQuality);
     
-                    $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
+                    $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
                     $image->writeImage('Public/img/' . $newImageName);
     
                     $image->destroy();
                 } else {
-                    $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
+                    $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
                     move_uploaded_file($tmpName, 'Public/img/' . $newImageName);
                 }
 
@@ -157,7 +161,7 @@ class Controller_user extends Controller
                     unlink('Public/img/' . $oldImageName);
                 }
 
-                $newImageName = $username."_".date('Y.m.d')."_".date('h.i.sa');
+                $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa');
                 $newImageName.=".".$imageExtension;
                 $m=User::get_model();
                 $m->set_profile_picture($newImageName);
@@ -173,6 +177,22 @@ class Controller_user extends Controller
             }
             
         }
+    }
+    private function isMobileImage($image) {
+        $width = $image->getImageWidth();
+        $height = $image->getImageHeight();
+
+        // Vous pouvez ajuster ces valeurs en fonction de votre expérience
+        $mobileWidthThreshold = 1000;
+        $mobileHeightThreshold = 1000;
+
+        if($width <= $mobileWidthThreshold && $height <= $mobileHeightThreshold) {
+            $size = min($width, $height);
+            $image->cropImage($size, $size, 0, 0);
+            return true;
+        }
+
+        return false;
     }
     
     

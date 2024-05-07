@@ -33,7 +33,14 @@ header .navbar{
   /* background-color:rgb(255, 203, 92); */
   border-bottom: 2px solid #ff914d;
 }
-
+.pp-navbar {
+  
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid rgb(56, 56, 56);
+  
+}
 
  /* -------------------------------------------------------------------------- */
 /*                              Registration form                             */
@@ -428,4 +435,19 @@ font-family: 'EB Garamond', serif;
 
   input[type=file]::-webkit-file-upload-button {
     cursor: pointer;
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                  moto show                                 */
+  /* -------------------------------------------------------------------------- */
+
+  .pp-commentaire {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid rgb(56, 56, 56);
+  }
+  
+  .badge-online {
+    transform: translate(-25px, 30px);
   }

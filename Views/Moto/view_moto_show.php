@@ -1,28 +1,26 @@
-
 <?php
 var_dump($moto);
+var_dump($commentaires);
 ?>
-    <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                
-                <div class="modal-body">
-                    
-                    <div class="container  h-100 ">
-                        <div class="row d-flex justify-content-center align-items-center h-100">
-                        <div class="col col-lg-9 col-xl-7 w-100">
-                            <div class="card">
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+        <div class="modal-body">
+
+            <div class="container  h-100 ">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-lg-9 col-xl-7 w-100">
+                        <div class="card">
 
                             <div class="card-body p-4">
 
                                 <div class="rounded-top d-flex flex-row justify-content-between border border-solid border-2 rounded border-0">
 
                                     <!-- ----------------------------- image et titre ----------------------------- -->
-                                    <div class="card-body p-1 border border-solid border-2 rounded d-flex flex-column">	
+                                    <div class="card-body p-1 border border-solid border-2 rounded d-flex flex-column">
                                         <div class="card w-75 border-0">
                                             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                                <img src="./Content/img/moto/<?= $moto[0]->moto_image_name ?>"
-                                                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                                                    style="width: 400px; z-index: 1">
+                                                <img src="./Content/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 400px; z-index: 1">
                                             </div>
 
                                             <div class="card-body">
@@ -50,84 +48,104 @@ var_dump($moto);
                                                     </div>
                                                     <div class="modal-body ">
                                                         <div class="d-flex justify-content-around">
-                                                        <div>
-                                                            <label for ="date-debut" class="form-label">Date début</label>
-                                                            <input type="date" class="form-control" id="date_debut" aria-describedby="date_debut" >
-                                                        </div>
-                                                    <div>
-                                                            <label for="date_fin" class="form-label">Date fin</label>
-                                                            <input type="date" class="form-control" id="date_fin" aria-describedby="date_fin">
-                                                    </div>
-                                                    
-                                                        </div>
-                                                        
+                                                            <div>
+                                                                <label for="date-debut" class="form-label">Date début</label>
+                                                                <input type="date" class="form-control" id="date_debut" aria-describedby="date_debut">
+                                                            </div>
+                                                            <div>
+                                                                <label for="date_fin" class="form-label">Date fin</label>
+                                                                <input type="date" class="form-control" id="date_fin" aria-describedby="date_fin">
+                                                            </div>
 
-                                                    <div style="overflow:hidden;">
-        
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                        <button type="button" class="btn btn-primary">Reserver !</button>
+                                                        </div>
+
+
+                                                        <div style="overflow:hidden;">
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                            <button type="button" class="btn btn-primary">Reserver !</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Fin de la Modal -->
+
+
                                         </div>
-                                        <!-- Fin de la Modal -->
-
-
+                                        <!-- fin de la div Prix -->
                                     </div>
-                                    <!-- fin de la div Prix -->
                                 </div>
-                            </div>
 
-                            <div class="card-body p-4 text-black ">
-                                
-                                <div class="mb-5 w-75">
-                                <p class="lead fw-normal mb-1">Adresse de départ et de retour</p>
-                                    <div class="p-4 border border-solid border-2 rounded d-flex flex-row justify-content-between" >
-                                        <div class="d-flex flex-row justify-content-between">
-                                        <i class="fa fa-map-marker fa-2x"></i>
-                                            <!--  <p class="font-italic mb-1 ms-3">{{ moto.proprietaire.user.adresse ~ " " ~ moto.proprietaire.user.codepostal ~ " " ~ moto.proprietaire.user.ville}}</p>  -->
-                                            <p class="font-italic mb-1 ms-3"><?= $moto[0]->ville_moto ?></p>  
+                                <div class="card-body p-4 text-black ">
+
+                                    <div class="mb-5 w-75">
+                                        <p class="lead fw-normal mb-1">Adresse de départ et de retour</p>
+                                        <div class="p-4 border border-solid border-2 rounded d-flex flex-row justify-content-between">
+                                            <div class="d-flex flex-row justify-content-between">
+                                                <i class="fa fa-map-marker fa-2x"></i>
+                                                <!--  <p class="font-italic mb-1 ms-3">{{ moto.proprietaire.user.adresse ~ " " ~ moto.proprietaire.user.codepostal ~ " " ~ moto.proprietaire.user.ville}}</p>  -->
+                                                <p class="font-italic mb-1 ms-3"><?= $moto[0]->ville_moto ?></p>
+                                            </div>
+                                            <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="270" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:200px;width:270px;}</style><a href="https://www.embedgooglemap.net"></a><style>.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:270px;}</style></div></div> -->
+                                            <div class="mapouter">
+                                                <div class="gmap_canvas"><iframe width="270" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q={{ adresseMoto }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
+                                                    <style>
+                                                        .mapouter {
+                                                            position: relative;
+                                                            text-align: right;
+                                                            height: 200px;
+                                                            width: 270px;
+                                                        }
+                                                    </style><a href="https://www.embedgooglemap.net"></a>
+                                                    <style>
+                                                        .gmap_canvas {
+                                                            overflow: hidden;
+                                                            background: none !important;
+                                                            height: 200px;
+                                                            width: 270px;
+                                                        }
+                                                    </style>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="270" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:200px;width:270px;}</style><a href="https://www.embedgooglemap.net"></a><style>.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:270px;}</style></div></div> -->
-                                        <div class="mapouter"><div class="gmap_canvas"><iframe width="270" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q={{ adresseMoto }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:200px;width:270px;}</style><a href="https://www.embedgooglemap.net"></a><style>.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:270px;}</style></div></div>
-
                                     </div>
-                                </div>
 
-                                <div class="mb-5 w-75">
-                                <p class="lead fw-normal mb-1">Propriétaire</p>
-                                    <div class="p-4 border border-solid border-2 rounded d-flex flex-row">
-                                        <div>
-                                            <img src="./Content/img/user/<?= $moto[0]->image_name ?>" alt="profile picture"
-                                                class="rounded-circle img-fluid" style="width: 70px;">
-                                        </div>
-                                        <div class="d-flex flex-column ms-3">
-                                            <a href="{{ path('app_proprietaire_show_public', {'id': moto.proprietaire.id}) }}"><p class="font-italic mb-1 h5"><?= $moto[0]->prenom ?> <?= mb_substr($moto[0]->nom, 0, 1) ?>.</p></a>
-                                            <p><i class="fa-solid fa-star" style="color: orange;"></i> /5 </p> 
-                                            <p></p>
+                                    <div class="mb-5 w-75">
+                                        <p class="lead fw-normal mb-1">Propriétaire</p>
+                                        <div class="p-4 border border-solid border-2 rounded d-flex flex-row">
+                                            <div>
+                                                <img src="./Content/img/user/<?= $moto[0]->image_name ?>" alt="profile picture" class="rounded-circle img-fluid" style="width: 70px;">
+                                            </div>
+                                            <div class="d-flex flex-column ms-3">
+                                                <a href="{{ path('app_proprietaire_show_public', {'id': moto.proprietaire.id}) }}">
+                                                    <p class="font-italic mb-1 h5"><?= $moto[0]->prenom ?> <?= mb_substr($moto[0]->nom, 0, 1) ?>.</p>
+                                                </a>
+                                                <p><i class="fa-solid fa-star" style="color: orange;"></i> /5 </p>
+                                                <p></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                              
-                                <div class="mb-5 w-75">
-                                    <p class="lead fw-normal mb-1">Description du véhicule</p>
-                                    <div class="p-4 border border-solid border-2 rounded" >
-                                        <p class="font-italic mb-1"><?= $moto[0]->description ?></p>
-                                    </div>
-                                </div>
 
-                                <div class="mb-5 w-75">
-                                    <p class="lead fw-normal mb-1">Caractéristiques techniques</p>
-                                    <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between" >
-                                        <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Cylindrée : <?= $moto[0]->cylindree ?> cm3</strong></div>
-                                        <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Poids : <?= $moto[0]->poids ?> kg</strong></div>
-                                        <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Puissance : <?= $moto[0]->puissance ?> ch</strong></div>
+                                    <div class="mb-5 w-75">
+                                        <p class="lead fw-normal mb-1">Description du véhicule</p>
+                                        <div class="p-4 border border-solid border-2 rounded">
+                                            <p class="font-italic mb-1"><?= $moto[0]->description ?></p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <!-- <div class="mb-5 w-75">
+                                    <div class="mb-5 w-75">
+                                        <p class="lead fw-normal mb-1">Caractéristiques techniques</p>
+                                        <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between">
+                                            <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Cylindrée : <?= $moto[0]->cylindree ?> cm3</strong></div>
+                                            <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Poids : <?= $moto[0]->poids ?> kg</strong></div>
+                                            <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Puissance : <?= $moto[0]->puissance ?> ch</strong></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="mb-5 w-75">
                                     <p class="lead fw-normal mb-1">Options et accessoires</p>
                                     <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between" >
                                         {# BOUCLER POUR LES OPTIONS
@@ -136,57 +154,66 @@ var_dump($moto);
                                     </div>
                                 </div> -->
 
-                                <div class="mb-5 w-75 ">
-                                    <p class="lead fw-normal mb-1">Evaluations</p>
-                                    <div class="p-4 border border-solid  border-2 rounded d-flex flex-column justify-content-between" >
-                                        
-                                        {% for commentaire in moto.commentaires %} 
-                                            <div class="card border-0 ">
-                                        
-                                                <div class="card-body">
-                                                    <div class="d-flex align-items-center ">
-                                                    <img src="{{ vich_uploader_asset(commentaire.user, 'imageFile') }}" alt="{{ commentaire.user.imageName }}"
-                                                        class="rounded-circle img-fluid" style="width: 70px;">
-                                                   
-                                                    <a href="{{ path('app_user_show_public', {'id': commentaire.user.id}) }}">
-                                                        <h5 class="card-title ms-3">{{ commentaire.user.prenom }} {{ commentaire.user.nom }}</h5>
-                                                    </a>
+                                    <div class="mb-5 w-75 ">
+                                        <p class="lead fw-normal mb-1">Evaluations</p>
+                                        <div class="p-4 border border-solid  border-2 rounded d-flex flex-column justify-content-between">
+
+                                            <?php foreach ($commentaires as $commentaire) : ?>
+                                                <div class="card border-0 ">
+
+                                                    <div class="card-body">
+                                                        <div class="d-flex align-items-center ">
+                                                            <!-- <img src="{{ vich_uploader_asset(commentaire.user, 'imageFile') }}" alt="{{ commentaire.user.imageName }}"
+                                                        class="rounded-circle img-fluid" style="width: 70px;"> -->
+                                                            <a href="?controller=user&action=public_profile&id=<?= $commentaire->user_id ?>" class="text-decoration-none link-dark fw-bold position-relative">
+                                                                <img src="Public/img/<?=$commentaire->image_name?>" alt="" title="<?=$commentaire->image_name?>" class="pp-commentaire me-2">
+                                                                <span class="badge-online position-absolute p-1 '.($user->active ? 'bg-success' : 'bg-danger').' border border-light rounded-circle">
+                                                                    <span class="visually-hidden">New alerts</span>
+                                                                </span>
+                                                                <h5 class="ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5>
+                                                            </a>
+
+                                                            <a href="{{ path('app_user_show_public', {'id': commentaire.user.id}) }}">
+                                                                <!-- <h5 class="card-title ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5> -->
+                                                            </a>
+                                                        </div>
+                                                        <p class="card-text"><?= $commentaire->texte_moto ?></p>
+                                                        <!-- <p><i class="fa-solid fa-star" style="color: orange;"></i> <?= $commentaire->note_moto ?>/5</p>  -->
+                                                        <?php
+                                                        if ($commentaire->note_moto > 0) {
+                                                            $etoiles = str_repeat('<i class="fa-solid fa-star" style="color: orange;"></i>', $commentaire->note_moto);
+                                                            echo $etoiles;
+                                                        }
+                                                        ?>
+
                                                     </div>
-                                                    <p class="card-text">{{ commentaire.textemoto }}</p>
-                                                    {# <p><i class="fa-solid fa-star" style="color: orange;"></i> {{ commentaire.notemoto }}/5</p> #}
-                                                        {% if commentaire.notemoto > 0 %}
-                                                            {% for i in range(1, commentaire.notemoto) %}
-                                                                <i class="fa-solid fa-star" style="color: orange;"></i>
-                                                            {% endfor %}
-                                                        {% endif %}
                                                 </div>
-                                            </div>
-                                        {% endfor %} 
-                                        
-                                    </div>
-                                </div>
+                                            <?php endforeach ?>
 
-                                <div class="mb-5 w-75">
-                                    <p class="lead fw-normal mb-1">Disponibilités</p>
-                                    <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between" >
-                                        CALENDRIER
+                                        </div>
                                     </div>
-                                </div>
 
+                                    <div class="mb-5 w-75">
+                                        <p class="lead fw-normal mb-1">Disponibilités</p>
+                                        <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between">
+                                            CALENDRIER
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
-                    {# </section> #}
-
-
                 </div>
+                {# </section> #}
+
 
             </div>
+
+        </div>
     </div>
 </div>
 
-				
+
 
 {% endblock %}

@@ -17,7 +17,9 @@
     $_SESSION['prenom'] = $user->prenom;
     $_SESSION['roles'] = $user->roles;
     $_SESSION['id'] = $user->user_id;
-   
+    $_SESSION['date_naissance'] = $user->date_naissance;
+    $_SESSION['image_name'] = $user->image_name;
+
 // var_dump($user);
 
     

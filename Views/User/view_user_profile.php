@@ -2,6 +2,7 @@
 
   <?php
   var_dump($user);
+  var_dump($proprietaire);
   // var_dump($followers);
   // var_dump($followed);
   ?>
@@ -23,7 +24,7 @@
 
                   <div class="round">
                     <input type="hidden" name="user_id" value="<?= $user[0]->user_id ?>">
-                    <input type="hidden" name="username" value="<?= $user[0]->username ?>">
+                    <input type="hidden" name="nom" value="<?= $user[0]->nom ?>">
                     <input type="file" name="img_input" id="img_input" accept="image/*" capture="camera">
                     <i class="fa fa-camera" style="color: #fff"></i>
                   </div>
@@ -31,11 +32,16 @@
               </form>
                 
             <h5 class="my-3"><?= $user[0]->prenom?> <?= $user[0]->nom?></h5>
-            <p class="text-muted mb-1">{% if 'ROLE_ADMIN' in user.getroles() %}
-                                        Administrateur                                        
-                                        {% endif %}
-                                        </p>
-              {% if proprietaire %}
+            <p class="text-muted mb-1">
+              <?php
+            if (isset($_SESSION['email']) && $_SESSION['roles'] == 'admin') 
+            {echo 'Administrateur';}
+                 ?></p>
+              <?php
+              if(isset($proprietaire) && !empty($proprietaire)){
+                echo "proprietaire";
+              }
+              ?>
               <p class="card-text small text-muted mb-3"><i class="fa-solid fa-star" style="color: orange;"></i> {{ proprietaire.average|number_format(2, '.', ',') }}/5 ({{ proprietaire.nombrecommentaires }})</p>
               {% endif %}          </div>
         </div>

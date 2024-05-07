@@ -20,7 +20,9 @@ class Controller_moto extends Controller
     public function action_moto_show()
     {
         $m=Moto::get_model();
-        $data=['moto'=>$m->get_moto_show()];
+        $mc=Commentaire::get_model();
+        $data=['moto'=>$m->get_moto_show(),
+               'commentaires'=>$mc->get_commentaires_recus_moto()];
         $this->render("moto_show",$data);
     }
 
