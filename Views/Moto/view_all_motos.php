@@ -57,7 +57,7 @@
 </div>
 	 -->
 
-<?php foreach($motos as $moto): ?>
+<!-- <?php foreach($motos as $moto): ?>
 <div id="container-cards">
     <div id="container-moto">	
         <div class="product-details">
@@ -98,6 +98,41 @@
         </div>
     </div>
 </div>
-<?php endforeach;?>
+<?php endforeach;?> -->
+
+	
+  
+<section id="gallery">
+  <div class="container">
+    <div class="row">
+
+<?php foreach($motos as $moto): ?>
+		<div class="col-lg-3 mb-4">
+			<div class="card">
+				<a href="?controller=moto&action=moto_show&moto_id=<?= $moto->moto_id ?>">
+					<img src="./Content/img/moto/<?= $moto->moto_image_name ?>" alt="" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title"><?= $moto->modele_libelle?></h5>
+						<p class="card-text">
+							<i class="fa-solid fa-location-dot"></i>
+							<?php echo isset($moto->ville_moto) ? $moto->ville_moto : $moto->ville; ?>
+						</p>
+					<a href="" class="btn btn-outline-success btn-sm">Réserver</a>
+						<a href="" class="btn btn-outline-danger btn-sm"><i class="far fa-heart"></i></a>
+					</div>
+					</a>
+				</div>
+			
+
+		</div>
+<?php endforeach;?> 
+
+ 
+
+  </div>
+</div>
+</section>
+
+
 
 

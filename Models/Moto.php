@@ -37,6 +37,25 @@ class Moto extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
    
+    public function get_moto_show()
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * 
+                                           FROM moto mt
+                                           JOIN modele md ON mt.modele_id = md.modele_id
+                                           JOIN marque mq ON md.marque_id = mq.marque_id
+                                           JOIN proprietaire p ON mt.proprietaire_id = p.proprietaire_id
+                                           JOIN user u ON u.user_id = p.user_id
+                                           WHERE moto_id = :mid  ');
+            $requete->execute(array(':mid' => $_GET['moto_id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+   
 
 
 }
