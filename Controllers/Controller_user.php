@@ -59,8 +59,11 @@ class Controller_user extends Controller
 
     public function action_public_profile()
     {
-        $m=User::get_model();
-        $user = $m->get_public_profile();
+        $mu=User::get_model();
+        $mc=Commentaire::get_model();
+        $mt=Moto::get_model();
+
+        $user = $mu->get_public_profile();
         
         $lastActivityTimestamp = strtotime($user[0]->lastActivityTime);
         $currentTimestamp = time();
@@ -68,14 +71,19 @@ class Controller_user extends Controller
 
         $user[0]->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
 
+        $user_id = $mt->get_user_id();
 
         $data=[
             // 'user'=>$m->get_public_profile(),
                 'user'=>$user,
-                'age'=>$m->get_age()
+                'age'=>$mu->get_age(),
+                'nbr_motos'=>$mu->get_nombre_motos_user(),
+                'commentaires'=>$mc->get_commentaires_recus_user(),
             //     'followers'=>$m->get_followers_number_public(),
             //    'followed'=>$m->get_followed_number_public(),
             //    'isFollowing'=>$m->get_is_following()
+                'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
+                'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id)
             ];
         $this->
         render("public_profile", $data);
@@ -142,12 +150,12 @@ class Controller_user extends Controller
                     $image->setImageCompressionQuality($compressionQuality);
     
                     $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
-                    $image->writeImage('Public/img/' . $newImageName);
+                    $image->writeImage('Public/img/user/' . $newImageName);
     
                     $image->destroy();
                 } else {
                     $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
-                    move_uploaded_file($tmpName, 'Public/img/' . $newImageName);
+                    move_uploaded_file($tmpName, 'Public/img/user' . $newImageName);
                 }
 
                 $m=User::get_model();
@@ -157,8 +165,8 @@ class Controller_user extends Controller
                 
 
                 // Delete old image if exists
-                if($oldImageName !== null && $oldImageName !== 'noprofile.png' && file_exists('Public/img/' . $oldImageName)) {
-                    unlink('Public/img/' . $oldImageName);
+                if($oldImageName !== null && $oldImageName !== 'noprofile.png' && file_exists('Public/img/user/' . $oldImageName)) {
+                    unlink('Public/img/user/' . $oldImageName);
                 }
 
                 $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa');
@@ -166,7 +174,7 @@ class Controller_user extends Controller
                 $m=User::get_model();
                 $m->set_profile_picture($newImageName);
                 $_SESSION['image_name'] = $newImageName;
-                move_uploaded_file($tmpName, 'Public/img/' . $newImageName);
+                move_uploaded_file($tmpName, 'Public/img/user/' . $newImageName);
                 echo 
                 "
                 <script>

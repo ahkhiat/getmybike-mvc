@@ -49,7 +49,7 @@
       if(isset($_SESSION['image_name']))
       {
         echo '
-        <img src="Public/img/'.$_SESSION["image_name"].'" width=125 height=125 alt="" title="'.$_SESSION["image_name"].'" class="pp-navbar">
+        <img src="Public/img/user/'.$_SESSION["image_name"].'" width=125 height=125 alt="" title="'.$_SESSION["image_name"].'" class="pp-navbar">
         ';
       } else {
         echo '

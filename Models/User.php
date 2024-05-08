@@ -96,7 +96,7 @@ class User extends Model
     {
 
         try {
-            $requete_user = $this->bd->prepare('SELECT user_id, prenom, nom, created_at, image_name, lastActivityTime  FROM user WHERE user_id = :d');
+            $requete_user = $this->bd->prepare('SELECT user_id, prenom, nom, created_at, image_name, lastActivityTime, date_naissance  FROM user WHERE user_id = :d');
             $requete_user->execute(array(':d' => $_GET['id']));
 
         } catch (PDOException $e) {
@@ -134,7 +134,6 @@ class User extends Model
     }
     public function get_date_naissance()
     {
-
         try {
             $requete = $this->bd->prepare('SELECT date_naissance FROM user WHERE user_id = :d');
             $requete->execute(array(':d' => $_GET['id']));
@@ -163,6 +162,21 @@ class User extends Model
         }
     }
     
+    public function get_nombre_motos_user()
+    {
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(*) FROM moto m
+                                           JOIN proprietaire p ON m.proprietaire_id = p.proprietaire_id
+                                           JOIN user u ON p.user_id = u.user_id
+                                           WHERE u.user_id = :u');
+            $requete->execute(array(':u'=>$_GET['id']));
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
     
 
     

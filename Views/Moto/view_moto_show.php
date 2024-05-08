@@ -1,6 +1,11 @@
 <?php
 var_dump($moto);
-var_dump($commentaires);
+// var_dump($commentaires);
+// var_dump($moy_notes);
+// var_dump($nbr_notes);
+// var_dump($moy_notes_user);
+// var_dump($nbr_notes_user);
+
 ?>
 <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -25,7 +30,7 @@ var_dump($commentaires);
 
                                             <div class="card-body">
                                                 <h2><?= $moto[0]->modele_libelle ?> </h2>
-                                                <p class="card-text small text-muted mb-0 ps-3"><i class="fa-solid fa-star" style="color: orange;"></i> {{ moto.average|number_format(2, '.', ',') }}/5 ({{ moto.nombrenotes }})</p>
+                                                <p class="card-text small text-muted mb-0 ps-3"><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes[0]->moyenne ?> /5 (<?= $nbr_notes[0]->nbr_notes ?>)</p>
                                             </div>
                                         </div>
                                     </div>
@@ -117,13 +122,13 @@ var_dump($commentaires);
                                         <p class="lead fw-normal mb-1">Propriétaire</p>
                                         <div class="p-4 border border-solid border-2 rounded d-flex flex-row">
                                             <div>
-                                                <img src="./Content/img/user/<?= $moto[0]->image_name ?>" alt="profile picture" class="rounded-circle img-fluid" style="width: 70px;">
+                                                <img src="./Public/img/user/<?= $moto[0]->image_name ?>" alt="profile picture" class="rounded-circle img-fluid" style="width: 70px;">
                                             </div>
                                             <div class="d-flex flex-column ms-3">
-                                                <a href="{{ path('app_proprietaire_show_public', {'id': moto.proprietaire.id}) }}">
+                                                <a href="?controller=user&action=public_profile&id=<?= $moto[0]->user_id ?>&moto_id=<?= $moto[0]->moto_id ?>">
                                                     <p class="font-italic mb-1 h5"><?= $moto[0]->prenom ?> <?= mb_substr($moto[0]->nom, 0, 1) ?>.</p>
                                                 </a>
-                                                <p><i class="fa-solid fa-star" style="color: orange;"></i> /5 </p>
+                                                <p><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes_user[0]->moyenne ?>  /5 (<?= $nbr_notes_user[0]->nbr_notes ?>)</p>
                                                 <p></p>
                                             </div>
                                         </div>
@@ -166,7 +171,7 @@ var_dump($commentaires);
                                                             <!-- <img src="{{ vich_uploader_asset(commentaire.user, 'imageFile') }}" alt="{{ commentaire.user.imageName }}"
                                                         class="rounded-circle img-fluid" style="width: 70px;"> -->
                                                             <a href="?controller=user&action=public_profile&id=<?= $commentaire->user_id ?>" class="text-decoration-none link-dark fw-bold position-relative">
-                                                                <img src="Public/img/<?=$commentaire->image_name?>" alt="" title="<?=$commentaire->image_name?>" class="pp-commentaire me-2">
+                                                                <img src="Public/img/user/<?=$commentaire->image_name?>" alt="" title="<?=$commentaire->image_name?>" class="pp-commentaire me-2">
                                                                 <span class="badge-online position-absolute p-1 '.($user->active ? 'bg-success' : 'bg-danger').' border border-light rounded-circle">
                                                                     <span class="visually-hidden">New alerts</span>
                                                                 </span>
@@ -205,7 +210,6 @@ var_dump($commentaires);
                         </div>
                     </div>
                 </div>
-                {# </section> #}
 
 
             </div>
@@ -216,4 +220,3 @@ var_dump($commentaires);
 
 
 
-{% endblock %}
