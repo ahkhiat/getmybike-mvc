@@ -36,4 +36,17 @@ class Controller_moto extends Controller
         $this->render("moto_show",$data);
     }
 
+    public function action_moto_add()
+    {
+        $m=Moto::get_model();
+        $data=['modeles'=>$m->get_all_modeles()];
+        $this->render("moto_add", $data);
+    }
+    public function action_moto_add_request()
+    {
+        $m=Moto::get_model();
+        $m->set_moto_add_request();
+        // $this->render("moto_add");
+    }
+
 }

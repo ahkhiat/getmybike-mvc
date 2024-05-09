@@ -1,5 +1,5 @@
 <?php
-var_dump($moto);
+// var_dump($moto);
 // var_dump($commentaires);
 // var_dump($moy_notes);
 // var_dump($nbr_notes);
@@ -166,32 +166,33 @@ var_dump($moto);
                                             <?php foreach ($commentaires as $commentaire) : ?>
                                                 <div class="card border-0 ">
                                                 <?php
-var_dump($commentaire); ?>
+                                                    // var_dump($commentaire); ?>
                                                     <div class="card-body">
-                                                        <div class="d-flex align-items-center ">
-                                                            <!-- <img src="{{ vich_uploader_asset(commentaire.user, 'imageFile') }}" alt="{{ commentaire.user.imageName }}"
-                                                        class="rounded-circle img-fluid" style="width: 70px;"> -->
+                                                        
                                                             <a href="?controller=user&action=public_profile&id=<?= $commentaire->user_id ?>" class="text-decoration-none link-dark fw-bold position-relative">
-                                                                <img src="Public/img/user/<?=$commentaire->image_name?>" alt="" title="<?=$commentaire->image_name?>" class="pp-commentaire me-2">
-                                                                <span class="badge-online position-absolute p-1 '.($user->active ? 'bg-success' : 'bg-danger').' border border-light rounded-circle">
-                                                                    <span class="visually-hidden">New alerts</span>
-                                                                </span>
-                                                                <h5 class="ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5>
+                                                                <div class="d-flex align-items-center ">
+                                                                    <img src="Public/img/user/<?=$commentaire->image_name?>" alt="" title="<?=$commentaire->image_name?>" class="pp-commentaire me-2">
+                                                                    <h5 class="ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5>
+                                                                </div>
                                                             </a>
-
-                                                            <a href="{{ path('app_user_show_public', {'id': commentaire.user.id}) }}">
-                                                                <!-- <h5 class="card-title ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5> -->
-                                                            </a>
-                                                        </div>
+                                                        
                                                         <p class="card-text"><?= $commentaire->texte_moto ?></p>
-                                                        <!-- <p><i class="fa-solid fa-star" style="color: orange;"></i> <?= $commentaire->note_moto ?>/5</p>  -->
-                                                        <?php
-                                                        if ($commentaire->note_moto > 0) {
-                                                            $etoiles = str_repeat('<i class="fa-solid fa-star" style="color: orange;"></i>', $commentaire->note_moto);
-                                                            echo $etoiles;
-                                                        }
-                                                        ?>
+                                                        <div class="d-flex justify-content-between">
+                                                            <div>
+                                                                <?php
+                                                                    if ($commentaire->note_moto > 0) {
+                                                                        $etoiles = str_repeat('<i class="fa-solid fa-star" style="color: orange;"></i>', $commentaire->note_moto);
+                                                                        echo $etoiles;
+                                                                    }
+                                                                ?>
+                                                            </div>
+                                                            <em><?= date('d m Y', strtotime($commentaire->created_at)) ?></em>
 
+                                                        </div>
+                                                        
+                                                        <p>
+                                                        </p>
+                                                        <hr>
                                                     </div>
                                                 </div>
                                             <?php endforeach ?>

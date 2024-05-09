@@ -21,9 +21,9 @@
             <div class="d-flex text-black">
               <div class="flex-shrink-0">
               <img src="Public/img/user/<?=$user[0]->image_name?>" alt="" title="<?=$user[0]->image_name?>" class="pp-user me-2">
-                <span class="badge-online-public-profile position-absolute p-2 <?= $user[0]->active ? 'bg-success' : 'bg-danger';?> border border-light rounded-circle">
+                <!-- <span class="badge-online-public-profile position-absolute p-2 <?= $user[0]->active ? 'bg-success' : 'bg-danger';?> border border-light rounded-circle">
                   <span class="visually-hidden">New alerts</span>
-                </span>
+                </span> -->
                 
               </div>
               <div class="flex-grow-1 ms-3">
@@ -70,18 +70,9 @@
       <!-- <?php var_dump($commentaire); ?> -->
         <div class="card-body">
             <div class="d-flex align-items-center ">
-                <!-- <img src="{{ vich_uploader_asset(commentaire.user, 'imageFile') }}" alt="{{ commentaire.user.imageName }}"
-            class="rounded-circle img-fluid" style="width: 70px;"> -->
                 <a href="?controller=user&action=public_profile&id=<?= $commentaire->user_id ?>" class="text-decoration-none link-dark fw-bold position-relative">
                     <img src="Public/img/user/<?=$commentaire->image_name?>" alt="" title="<?=$commentaire->image_name?>" class="pp-commentaire me-2">
-                    <span class="badge-online-public-profile position-absolute p-2 <?= $user[0]->active ? 'bg-success' : 'bg-danger';?> border border-light rounded-circle">
-                      <span class="visually-hidden">New alerts</span>
-                    </span>
                     <h5 class="ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5>
-                </a>
-
-                <a href="{{ path('app_user_show_public', {'id': commentaire.user.id}) }}">
-                    <!-- <h5 class="card-title ms-3"><?= $commentaire->prenom ?> <?= $commentaire->nom ?></h5> -->
                 </a>
             </div>
             <p class="card-text"><?= $commentaire->texte_proprio ?></p>

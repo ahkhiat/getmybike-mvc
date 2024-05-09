@@ -3,6 +3,7 @@
   <?php
   var_dump($user);
   var_dump($proprietaire);
+  var_dump($is_proprietaire);
   // var_dump($followers);
   // var_dump($followed);
   ?>
@@ -163,11 +164,20 @@
               {{ include('user/_delete_form.html.twig') }}
         </div> #}
 
+        <!-- /* ----------------------------- container motos ---------------------------- */ -->
        {% if proprietaire and proprietaire.nombreMotos != 0 %}
         <div class="row">
+
           <div class="col-md-12">
             <div class="card mb-4 mb-md-0">
               <div class="card-body">
+
+              <?php if($is_proprietaire):?>  
+              <a href="?controller=moto&action=moto_add"><button type="btn" class="btn btn-primary">Ajouter une moto</button></a>
+              <?php else : ?>
+              <a href="?controller=user&action=set_proprietaire"><button type="btn" class="btn btn-primary">Créer une fiche propriétaire</button></a>
+              <?php endif; ?>
+
                 <p class="mb-4"><span class="font-italic me-1 fw-bold">
                 {% if proprietaire.nombreMotos == 1 %}
                 Ma moto :

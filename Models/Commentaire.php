@@ -25,7 +25,7 @@ class Commentaire extends Model
 
         try {
             $requete = $this->bd->prepare('SELECT c.commentaire_id, c.note_moto, c.texte_moto, c.note_proprio, 
-                                           c.texte_proprio, u.nom, u.prenom, u.image_name, c.created_at
+                                           c.texte_proprio, u.nom, u.prenom, u.image_name, c.created_at, u.user_id
                                            FROM commentaire c
                                            JOIN reservation r ON c.reservation_id = r.reservation_id
                                            JOIN user u ON u.user_id = r.user_id
@@ -78,7 +78,7 @@ class Commentaire extends Model
 
         try {
             $requete = $this->bd->prepare('SELECT c.commentaire_id, c.note_moto, c.texte_moto, c.note_proprio, 
-                                           c.texte_proprio, us.nom, us.prenom, us.image_name, c.created_at
+                                           c.texte_proprio, us.nom, us.prenom, us.image_name, c.created_at, us.user_id
                                            FROM commentaire c
                                            JOIN reservation r ON c.reservation_id = r.reservation_id
                                            JOIN user us ON r.user_id = us.user_id

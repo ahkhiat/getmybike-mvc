@@ -45,6 +45,7 @@ class Controller_user extends Controller
 
         $data=['user'=>$m->get_user_profile(),
                'proprietaire'=>$m->get_proprietaire(),
+               'is_proprietaire'=>$m->get_is_proprietaire(),
         //        'age'=>$mu->get_age($user_id),
         //        'nbr_motos'=>$mu->get_nombre_motos_user($user_id),
         //        'commentaires'=>$mc->get_commentaires_recus_user($user),
@@ -102,6 +103,17 @@ class Controller_user extends Controller
             ];
         $this->
         render("public_profile", $data);
+    }
+
+    public function action_set_proprietaire()
+    {
+        $this->render("set_proprietaire");
+    }
+    public function action_set_proprietaire_request()
+    {
+        $m=User::get_model();
+        $m->set_proprietaire_request();
+        $this->render("set_proprietaire");
     }
     
     public function action_profile_picture()
