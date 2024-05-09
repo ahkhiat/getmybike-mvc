@@ -132,11 +132,11 @@ class User extends Model
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
     }
-    public function get_date_naissance()
+    public function get_date_naissance($user_id)
     {
         try {
             $requete = $this->bd->prepare('SELECT date_naissance FROM user WHERE user_id = :d');
-            $requete->execute(array(':d' => $_GET['id']));
+            $requete->execute(array(':d' => $user_id));
 
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
@@ -145,11 +145,11 @@ class User extends Model
 
     }
     
-    public function get_age()
+    public function get_age($user_id)
     {
         try {
             $requete = $this->bd->prepare('SELECT date_naissance FROM user WHERE user_id = :d');
-            $requete->execute(array(':d' => $_GET['id']));
+            $requete->execute(array(':d' => $user_id));
     
             $resultat = $requete->fetch(PDO::FETCH_OBJ);
             $date_naissance = new DateTime($resultat->date_naissance);
@@ -162,14 +162,14 @@ class User extends Model
         }
     }
     
-    public function get_nombre_motos_user()
+    public function get_nombre_motos_user($user_id)
     {
         try {
             $requete = $this->bd->prepare('SELECT COUNT(*) FROM moto m
                                            JOIN proprietaire p ON m.proprietaire_id = p.proprietaire_id
                                            JOIN user u ON p.user_id = u.user_id
                                            WHERE u.user_id = :u');
-            $requete->execute(array(':u'=>$_GET['id']));
+            $requete->execute(array(':u'=>$user_id));
             $count = $requete->fetchColumn();
             return $count;
             

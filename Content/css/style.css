@@ -441,9 +441,16 @@ font-family: 'EB Garamond', serif;
   /*                                  moto show                                 */
   /* -------------------------------------------------------------------------- */
 
-  .pp-commentaire {
+  .pp-user {
     height: 70px;
     width: 70px;
+    border-radius: 50%;
+    border: 2px solid rgb(56, 56, 56);
+  }
+
+  .pp-commentaire {
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     border: 2px solid rgb(56, 56, 56);
   }
@@ -451,3 +458,10 @@ font-family: 'EB Garamond', serif;
   .badge-online {
     transform: translate(-25px, 30px);
   }
+
+/* -------------------------------------------------------------------------- */
+/*                                public profil                               */
+/* -------------------------------------------------------------------------- */
+.badge-online-public-profile {
+  transform: translate(-25px, 50px);
+}

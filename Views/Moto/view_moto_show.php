@@ -165,7 +165,8 @@ var_dump($moto);
 
                                             <?php foreach ($commentaires as $commentaire) : ?>
                                                 <div class="card border-0 ">
-
+                                                <?php
+var_dump($commentaire); ?>
                                                     <div class="card-body">
                                                         <div class="d-flex align-items-center ">
                                                             <!-- <img src="{{ vich_uploader_asset(commentaire.user, 'imageFile') }}" alt="{{ commentaire.user.imageName }}"

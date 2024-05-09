@@ -38,8 +38,22 @@ class Controller_user extends Controller
     public function action_user_profile()
     {
         $m=User::get_model();
+        $mc=Commentaire::get_model();
+        $mt=Moto::get_model();
+
+        $user_id = $_SESSION['id'];
+
         $data=['user'=>$m->get_user_profile(),
-               'proprietaire'=>$m->get_proprietaire()];
+               'proprietaire'=>$m->get_proprietaire(),
+        //        'age'=>$mu->get_age($user_id),
+        //        'nbr_motos'=>$mu->get_nombre_motos_user($user_id),
+        //        'commentaires'=>$mc->get_commentaires_recus_user($user),
+        //    //     'followers'=>$m->get_followers_number_public(),
+        //    //    'followed'=>$m->get_followed_number_public(),
+        //    //    'isFollowing'=>$m->get_is_following()
+        //        'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
+        //        'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id)
+            ];
         $this->render("user_profile", $data);
     }
 
@@ -71,19 +85,20 @@ class Controller_user extends Controller
 
         $user[0]->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
 
-        $user_id = $mt->get_user_id();
+        $user_moto_prop_id = $mt->get_user_id();
+        $user_id = $_GET['id'];
 
         $data=[
             // 'user'=>$m->get_public_profile(),
                 'user'=>$user,
-                'age'=>$mu->get_age(),
-                'nbr_motos'=>$mu->get_nombre_motos_user(),
-                'commentaires'=>$mc->get_commentaires_recus_user(),
+                'age'=>$mu->get_age($user_id),
+                'nbr_motos'=>$mu->get_nombre_motos_user($user_id),
+                'commentaires'=>$mc->get_commentaires_recus_user($user_id),
             //     'followers'=>$m->get_followers_number_public(),
             //    'followed'=>$m->get_followed_number_public(),
             //    'isFollowing'=>$m->get_is_following()
-                'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
-                'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id)
+                'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_moto_prop_id),
+                'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_moto_prop_id)
             ];
         $this->
         render("public_profile", $data);

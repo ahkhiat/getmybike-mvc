@@ -20,7 +20,7 @@
             <!-- /* ----------------------------- image container ---------------------------- */ -->
             <form action="?controller=user&action=profile_picture" class="img-form" id="img_form" enctype="multipart/form-data" method="POST">
                 <div class="upload">
-                <img src="Public/img/<?= $user[0]->image_name ?>" width=125 height=125 alt="" title="<?= $user[0]->image_name ?>">
+                <img src="Public/img/user/<?= $user[0]->image_name ?>" width=125 height=125 alt="" title="<?= $user[0]->image_name ?>">
 
                   <div class="round">
                     <input type="hidden" name="user_id" value="<?= $user[0]->user_id ?>">
@@ -42,8 +42,12 @@
                 echo "proprietaire";
               }
               ?>
-              <p class="card-text small text-muted mb-3"><i class="fa-solid fa-star" style="color: orange;"></i> {{ proprietaire.average|number_format(2, '.', ',') }}/5 ({{ proprietaire.nombrecommentaires }})</p>
-              {% endif %}          </div>
+              <p class="card-text small text-muted mb-3">
+                <i class="fa-solid fa-star" style="color: orange;"></i> 
+                {{ proprietaire.average|number_format(2, '.', ',') }}/5 ({{ proprietaire.nombrecommentaires }})
+              </p>
+              {% endif %}          
+            </div>
         </div>
         <div class="card mb-4 mb-lg-0">
           <div class="card-body p-0">

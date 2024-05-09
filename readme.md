@@ -23,4 +23,9 @@ A faire:
 profil public : 
     affichage des commentaires
 
+formulaire pour enregistrer moto
+reflechir comment user devient proprio
+
+
+
 Faire systeme de likes pour moto favorites
