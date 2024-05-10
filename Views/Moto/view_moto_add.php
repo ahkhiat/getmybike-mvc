@@ -6,7 +6,7 @@ var_dump($modeles);
     <div class="mx-auto col-xl-6 col-md-8 col-sm-10 col-11">
         <h1>Ajouter une moto</h1>
 
-        <form action-"" method="POST">
+        <form action="?controller=moto&action=moto_add_request" method="POST">
             <div class="row">
                 <div class="mb-3 col-xl-6">
                     <label for="modele" class="form-label">Modèle</label>

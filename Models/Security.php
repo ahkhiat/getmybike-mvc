@@ -88,7 +88,7 @@ public function get_user_registration_valid()
             // L'email n'existe pas, il faut s'inscription
             //'user' is the default role
             $role = "user";
-            $requete_insertion = $this->bd->prepare('INSERT INTO user (id_user, email, roles, pswd, prenom, nom) 
+            $requete_insertion = $this->bd->prepare('INSERT INTO user (user_id, email, roles, pswd, prenom, nom) 
                 VALUES(NULL, :e, :rl, :pswd, :prenom, :nom)');
             
             $requete_insertion->execute(array(

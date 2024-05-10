@@ -24,12 +24,24 @@ class Controller_security extends Controller
     public function action_login()
 
     {
-        $m=Security::get_model();
+        $ms=Security::get_model();
+        $mu=User::get_model();
 
-        $data = ['user'=>$m->get_login()];
+        // $data = ['user'=>$ms->get_login(),
+        //          'proprietaire'=>$mu->get_proprietaire()];
 
-        $this->render("login",$data);
-        
+        // $this->render("login",$data);
+
+        $user = $ms->get_login();
+
+        if ($user) {
+
+            $user_id = $user->user_id;
+
+            $proprietaire = $mu->get_proprietaire($user_id);
+            $data = ['user' => $user, 'proprietaire' => $proprietaire];
+            $this->render("login", $data);
+        }
     }
 
 //.............................disconnection...............................

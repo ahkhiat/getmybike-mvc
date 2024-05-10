@@ -76,14 +76,14 @@ class User extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function get_proprietaire()
+    public function get_proprietaire($user_id)
     {
 
         try {
             $requete = $this->bd->prepare('SELECT * FROM proprietaire p
                                            JOIN user u ON p.user_id = u.user_id
                                            WHERE p.user_id = :d');
-            $requete->execute(array(':d' => $_SESSION['id']));
+            $requete->execute(array(':d' => $user_id));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
@@ -97,9 +97,10 @@ class User extends Model
                                            JOIN user u ON p.user_id = u.user_id
                                            WHERE p.user_id = :d');
             $requete->execute(array(':d' => $_SESSION['id']));
-            $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+            $result = $requete->fetch(PDO::FETCH_ASSOC);
 
-            return $resultat['count'] > 0;
+            return $result['count'] > 0;
+            
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
@@ -111,11 +112,14 @@ class User extends Model
             $requete = $this->bd->prepare('INSERT INTO proprietaire (proprietaire_id, user_id, iban) 
             VALUES(NULL, :usid, :iban)');
             $requete->execute(array(':usid' => $_SESSION['id'], ':iban'=>$_POST['iban']));
+
+            $lastInsertedId = $this->bd->lastInsertId();
+
+            $_SESSION['prop_id'] = $lastInsertedId;
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
 

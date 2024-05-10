@@ -38,7 +38,7 @@ class Commentaire extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
-    public function get_moy_notes_recues_moto()
+    public function get_moy_notes_recues_moto($moto_id)
     {
 
         try {
@@ -49,14 +49,14 @@ class Commentaire extends Model
                                            WHERE r.moto_id = :mid;
 
                                            ');
-            $requete->execute(array(':mid'=> $_GET['moto_id']));
+            $requete->execute(array(':mid'=> $moto_id));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
-    public function get_nbr_notes_recues_moto()
+    public function get_nbr_notes_recues_moto($moto_id)
     {
 
         try {
@@ -66,14 +66,14 @@ class Commentaire extends Model
                                            JOIN user u ON u.user_id = r.user_id 
                                            WHERE r.moto_id = :mid;
                                            ');
-            $requete->execute(array(':mid'=> $_GET['moto_id']));
+            $requete->execute(array(':mid'=> $moto_id));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
-    public function get_commentaires_recus_user()
+    public function get_commentaires_recus_user($user_id)
     {
 
         try {
@@ -87,12 +87,33 @@ class Commentaire extends Model
                                            JOIN user u ON u.user_id = p.user_id
                                            WHERE u.user_id = :pid
                                            ');
-            $requete->execute(array(':pid'=> $_GET['id']));
+            $requete->execute(array(':pid'=> $user_id));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function get_nbr_commentaires_recus_user($user_id)
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(c.commentaire_id)
+                                           FROM commentaire c
+                                           JOIN reservation r ON c.reservation_id = r.reservation_id
+                                           JOIN user us ON r.user_id = us.user_id
+                                           JOIN moto m ON r.moto_id = m.moto_id
+                                           JOIN proprietaire p ON p.proprietaire_id = m.proprietaire_id
+                                           JOIN user u ON u.user_id = p.user_id
+                                           WHERE u.user_id = :pid
+                                           ');
+            $requete->execute(array(':pid'=> $user_id));
+            $count = $requete->fetchColumn();
+            return $count;
+
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
     }
     public function get_moy_notes_recues_user($user_id)
     {
@@ -139,10 +160,6 @@ class Commentaire extends Model
 
 
    
-// SELECT (SUM(note_moto)/COUNT(note_moto)) FROM commentaire c JOIN reservation r ON c.reservation_id = r.reservation_id JOIN user u ON u.user_id = r.user_id WHERE r.moto_id = 24;
-
-// SELECT COUNT(note_moto) FROM commentaire c JOIN reservation r ON c.reservation_id = r.reservation_id JOIN user u ON u.user_id = r.user_id WHERE r.moto_id = 24;
-
 
 
 }
