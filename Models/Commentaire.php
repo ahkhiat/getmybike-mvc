@@ -20,7 +20,7 @@ class Commentaire extends Model
         parent::__construct(); 
     }
 
-    public function get_commentaires_recus_moto()
+    public function get_commentaires_recus_moto($moto_id)
     {
 
         try {
@@ -31,7 +31,7 @@ class Commentaire extends Model
                                            JOIN user u ON u.user_id = r.user_id
                                            WHERE r.moto_id = :mid
                                            ');
-            $requete->execute(array(':mid'=> $_GET['moto_id']));
+            $requete->execute(array(':mid'=> $moto_id));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');

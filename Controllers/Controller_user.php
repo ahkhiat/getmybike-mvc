@@ -46,7 +46,7 @@ class Controller_user extends Controller
 
         $data=['user'=>$m->get_user_profile(),
                'proprietaire'=>$m->get_proprietaire($user_id),
-               'is_proprietaire'=>$m->get_is_proprietaire(),
+               'is_proprietaire'=>$m->get_is_proprietaire($user_id),
                'motos'=>$mt->get_all_motos_user(),
                'nbr_motos'=>$m->get_nombre_motos_user($user_id),
                'nbr_reservations'=>$mr->get_nbr_reservations($user_id),
@@ -94,6 +94,8 @@ class Controller_user extends Controller
                 'age'=>$mu->get_age($user_id),
                 'nbr_motos'=>$mu->get_nombre_motos_user($user_id),
                 'commentaires'=>$mc->get_commentaires_recus_user($user_id),
+                'is_proprietaire'=>$mu->get_is_proprietaire($user_id),
+
             //     'followers'=>$m->get_followers_number_public(),
             //    'followed'=>$m->get_followed_number_public(),
             //    'isFollowing'=>$m->get_is_following()

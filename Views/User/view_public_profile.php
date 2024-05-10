@@ -8,6 +8,7 @@
 // var_dump($moy_notes_user);
 // var_dump($nbr_notes_user);
 // var_dump($commentaires)
+var_dump($is_proprietaire);
 ?>
 
 <div id="public_profile">
@@ -27,7 +28,17 @@
                 
               </div>
               <div class="flex-grow-1 ms-3">
+                <div class="d-flex justify-content-between">
                 <h5 class="mb-1"><?= $user[0]->prenom ?> <?= mb_substr($user[0]->nom, 0, 1) ?></h5>
+                <div>
+                  <?php               
+                  if($is_proprietaire) {
+                    echo "<span class='badge text-bg-secondary'>Proriétaire</span>";
+                  }
+                  ?>
+                </div>
+
+                </div>
                 <p class="mb-2 pb-1" style="color: #2b2a2a;"><?= $age ?> ans</p>
                 <p><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes_user[0]->moyenne ?>  /5 (<?= $nbr_notes_user[0]->nbr_notes ?>)</p>
 

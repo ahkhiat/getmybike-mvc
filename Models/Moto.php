@@ -37,7 +37,7 @@ class Moto extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
    
-    public function get_moto_show()
+    public function get_moto_show($moto_id)
     {
 
         try {
@@ -48,7 +48,7 @@ class Moto extends Model
                                            JOIN proprietaire p ON mt.proprietaire_id = p.proprietaire_id
                                            JOIN user u ON u.user_id = p.user_id
                                            WHERE moto_id = :mid  ');
-            $requete->execute(array(':mid' => $_GET['moto_id']));
+            $requete->execute(array(':mid' => $moto_id));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
@@ -178,7 +178,63 @@ class Moto extends Model
         // return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function get_moto_update_request()
+    {
 
+        try {
+            // $bagagerie = isset($_POST['bagagerie']) && $_POST['bagagerie'] === 'on';
+
+            $requete = $this->bd->prepare('UPDATE moto SET modele_id = :mod, annee = :annee, 
+                                           couleur = :coul, prix_jour = :pj, description = :des, bagagerie = :bag, adresse_moto = :adr, 
+                                           code_postal_moto = :cp, ville_moto = :vil, cylindree = :cyl, poids = :poi, 
+                                           puissance = :pui
+                                           WHERE moto_id = :mid
+                                           ');
+            $requete->execute(array(':mid' => $_POST['moto_id'],
+                                    ':mod' => $_POST['modele_id'],
+                                    ':annee' => $_POST['annee'],
+                                    ':coul' => $_POST['couleur'],
+                                    ':pj' => $_POST['prix_jour'],
+                                    ':des' => $_POST['description'],
+                                    ':bag' => $_POST['bagagerie'],
+                                    ':adr' => $_POST['adresse_moto'],
+                                    ':cp' => $_POST['code_postal_moto'],
+                                    ':vil' => $_POST['ville_moto'],
+                                    ':cyl' => $_POST['cylindree'],
+                                    ':poi' => $_POST['poids'],
+                                    ':pui' => $_POST['puissance']
+                                    ));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function set_moto_picture($newImageName)
+    {
+        try {
+            $requete = $this->bd->prepare('UPDATE moto SET moto_image_name = :new WHERE moto_id = :id');
+            $requete->execute(array(':id' => $_POST['moto_id'], ':new' => $newImageName));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+
+    }
+    public function get_moto_picture($moto_id)
+    {   
+        try {
+            $requete = $this->bd->prepare('SELECT moto_image_name FROM moto WHERE moto_id = :id');
+            $requete->execute(array(':id' => $moto_id));
+            $result = $requete->fetchColumn();
+            return $result;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
    
 
 

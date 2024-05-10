@@ -7,7 +7,7 @@
   // var_dump($motos);
   // var_dump($followers);
   // var_dump($followed);
-  var_dump($_SESSION);
+  // var_dump($_SESSION);
   // var_dump($moy_notes_user);
   // var_dump($nbr_motos);
   // var_dump($nbr_reservations);
@@ -210,8 +210,11 @@
                           <div class="d-flex justify-content-between">
                             <a href="?controller=moto&action=moto_show&moto_id=<?= $moto->moto_id ?>"
                               class="btn btn-outline-warning btn-sm">Fiche moto</a>
-                            <a href="{{ path('app_moto_edit', {'id': moto.id}) }}"
-                              class="btn btn-outline-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+
+                            <form action="?controller=moto&action=moto_update" method="POST">
+                              <input type="hidden" name="moto_id" id="moto_id" value="<?= $moto->moto_id ?>">
+                              <button type="submit" class="btn btn-outline-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></button>
+                            </form>
                           </div>
                         </div>
                       </div>

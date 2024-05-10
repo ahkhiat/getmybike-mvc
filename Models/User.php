@@ -90,13 +90,13 @@ class User extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
-    public function get_is_proprietaire()
+    public function get_is_proprietaire($user_id)
     {
         try {
             $requete = $this->bd->prepare('SELECT COUNT(*) AS count FROM proprietaire p
                                            JOIN user u ON p.user_id = u.user_id
                                            WHERE p.user_id = :d');
-            $requete->execute(array(':d' => $_SESSION['id']));
+            $requete->execute(array(':d' => $user_id));
             $result = $requete->fetch(PDO::FETCH_ASSOC);
 
             return $result['count'] > 0;
