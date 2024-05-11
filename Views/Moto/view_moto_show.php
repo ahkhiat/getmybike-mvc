@@ -5,7 +5,8 @@
 // var_dump($nbr_notes);
 // var_dump($moy_notes_user);
 // var_dump($nbr_notes_user);
-var_dump($is_favori);
+// var_dump($is_favori);
+var_dump($reservations);
 
 ?>
 <div class="modal-dialog modal-xl">
@@ -68,32 +69,34 @@ var_dump($is_favori);
                                         <div class="modal fade" id="ModalDates" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered ">
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Je veux reserver cette moto</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body ">
-                                                        <div class="d-flex justify-content-around">
-                                                            <div>
-                                                                <label for="date-debut" class="form-label">Date début</label>
-                                                                <input type="date" class="form-control" id="date_debut" aria-describedby="date_debut">
+                                                    <form action="?controller=reservation&action=reserver" method="POST">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Je veux reserver cette moto</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body ">
+                                                            <div class="d-flex justify-content-around">
+                                                                <div>
+                                                                    <label for="date-debut" class="form-label">Date début</label>
+                                                                    <input type="date" class="form-control" id="date_debut" name="date_debut">
+                                                                </div>
+                                                                <div>
+                                                                    <label for="date_fin" class="form-label">Date fin</label>
+                                                                    <input type="date" class="form-control" id="date_fin" name="date_fin">
+                                                                    <input type="hidden" class="form-control" id="moto_id" name="moto_id" value="<?= $moto[0]->moto_id?>">
+
+                                                                </div>
+
                                                             </div>
-                                                            <div>
-                                                                <label for="date_fin" class="form-label">Date fin</label>
-                                                                <input type="date" class="form-control" id="date_fin" aria-describedby="date_fin">
+                                                            <div style="overflow:hidden;">
+
                                                             </div>
-
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                                <button type="submit" class="btn btn-primary">Reserver !</button>
+                                                            </div>
                                                         </div>
-
-
-                                                        <div style="overflow:hidden;">
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                            <button type="button" class="btn btn-primary">Reserver !</button>
-                                                        </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                             <!-- Fin de la Modal -->

@@ -67,8 +67,21 @@ class User extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('UPDATE user SET lastname = :ln, firstname = :fn, email = :em, birthdate = :birth  WHERE user_id = :d');
-            $requete->execute(array(':d' => $_SESSION['id'], ':ln' => $_POST['lastname'], ':fn' => $_POST['firstname'], ':em' => $_POST['email'], ':birth' => $_POST['birthdate'] ));
+            $requete = $this->bd->prepare('UPDATE user SET nom = :nom, prenom = :pre, email = :em, date_naissance = :dn,
+                                           adresse = :ad, code_postal = :cp, ville = :v, telephone = :tel, bio = :bio,
+                                           updated_at = NOW()  
+                                           WHERE user_id = :d');
+            $requete->execute(array(':d' => $_SESSION['id'], 
+                                    ':nom' => $_POST['nom'], 
+                                    ':pre' => $_POST['prenom'], 
+                                    ':em' => $_POST['email'], 
+                                    ':dn' => $_POST['date_naissance'], 
+                                    ':ad' => $_POST['adresse'], 
+                                    ':cp' => $_POST['code_postal'], 
+                                    ':v' => $_POST['ville'], 
+                                    ':tel' => $_POST['telephone'], 
+                                    ':bio' => $_POST['bio'], 
+                                    ));
             
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');

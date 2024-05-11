@@ -68,6 +68,10 @@
                   </p>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  Profil mis à jour le : <p class="text-muted mb-0"><?= date('d m Y', strtotime($user[0]->updated_at)) ?>
+                  </p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                   Nombre de motos : <p class="text-muted mb-0"><?= $nbr_motos ?></p>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -81,7 +85,7 @@
               </ul>
             </div>
             <div class="d-flex justify-content-center mb-2">
-              <a href="{{ path('app_user_edit', {'id': user.id}) }}"><button type="button"
+              <a href="?controller=user&action=user_profile_edit"><button type="button"
                   class="btn btn-outline-warning">Modifier</button></a>
             </div>
           </div>

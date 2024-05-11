@@ -37,9 +37,9 @@ class Controller_moto extends Controller
     public function action_moto_show()
     {
 
-
         $m=Moto::get_model();
         $mc=Commentaire::get_model();
+        $mr=Reservation::get_model();
 
         $user_id = $m->get_user_id();
         $moto_id = $_GET['moto_id'];
@@ -50,7 +50,8 @@ class Controller_moto extends Controller
                'nbr_notes'=>$mc->get_nbr_notes_recues_moto($moto_id),
                'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
                'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id),
-               'is_favori'=>$m->get_is_favori($moto_id)
+               'is_favori'=>$m->get_is_favori($moto_id),
+               'reservations'=>$mr->get_reservations($moto_id)
             ];
         $this->render("moto_show",$data);
     }

@@ -18,21 +18,6 @@ class Controller_user extends Controller
         $data=['users'=>$m->get_all_users()];
         $this->render("all_users",$data);
     }
-    // public function action_all_users()
-    // {
-    //     $m=User::get_model();
-    //     $users = $m->get_all_users();
-    //     foreach ($users as $user) {
-    //         $lastActivityTimestamp = strtotime($user->lastActivityTime);
-    //         $currentTimestamp = time();
-    //         $timeDifference = $currentTimestamp - $lastActivityTimestamp;
-    
-    //         $user->active = ($timeDifference <= 300); // 5 minutes en secondes (5 * 60 = 300)
-    //     }
-
-    //     $data=['users'=> $users];
-    //     $this->render("all_users",$data);
-    // }
 
 
     public function action_user_profile()
@@ -72,9 +57,8 @@ class Controller_user extends Controller
     public function action_user_profile_edit_request()
     {  
         $m=User::get_model();
-        $data=['users'=>$m->set_user_profile(),
-               'user'=>$m->get_user_profile()];
-        $this->render("user_profile", $data);
+        $m->set_user_profile();
+        $this->action_user_profile();
     }
 
     public function action_public_profile()

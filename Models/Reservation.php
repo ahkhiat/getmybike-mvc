@@ -38,6 +38,43 @@ class Reservation extends Model
         $count = $requete->fetchColumn();
         return $count;
     }
+
+    public function get_reservations($moto_id)
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * 
+                                           FROM reservation
+                                           WHERE moto_id = :mid
+                                           ');
+            $requete->execute(array(
+                                    'mid'=> $moto_id,
+                                    ));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function set_reservation($moto_id)
+    {
+
+        try {
+            $requete = $this->bd->prepare('INSERT INTO reservation 
+                                           (reservation_id, user_id, moto_id, date_debut, date_fin)
+                                           VALUES (NULL, :usid, :mid, :dd, :df)
+                                           ');
+            $requete->execute(array(':usid'=> $_SESSION['id'],
+                                    'mid'=> $moto_id,
+                                    ':dd'=> $_POST['date_debut'],
+                                    ':df'=> $_POST['date_fin']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
    
 
 
