@@ -44,6 +44,39 @@ class Controller_moto extends Controller
         $user_id = $m->get_user_id();
         $moto_id = $_GET['moto_id'];
 
+        $date_actuelle = new DateTime();
+        $mois_du_jour = $date_actuelle->format('F');
+        $annee_du_jour = $date_actuelle->format('Y');
+
+        $mois_actuel = new DateTime('first day of this month');
+        $fin_mois_actuel = new DateTime('last day of this month');
+
+        $date_suivante = clone $date_actuelle;
+        $date_suivante->modify('+1 month');
+
+        $mois_suivant = clone $mois_actuel;
+        $mois_suivant->modify('+1 month');
+        $fin_mois_suivant = new DateTime('last day of ' . $mois_suivant->format('F Y'));
+
+
+        $mois_du_jour_suivant = $date_suivante->format('F'); 
+        $annee_du_jour_suivante = $date_suivante->format('Y'); 
+
+        $reservations = $mr->get_reservations($moto_id);
+
+        $jours_reserves = [];
+
+        foreach ($reservations as $reservation) {
+            $date_debut = new DateTime($reservation->date_debut);
+            $date_fin = new DateTime($reservation->date_fin);
+
+            $interval = new DateInterval('P1D'); 
+            $periode = new DatePeriod($date_debut, $interval, $date_fin);
+            foreach ($periode as $jour) {
+                $jours_reserves[] = $jour->format('Y-m-d');
+            }
+        }
+
         $data=['moto'=>$m->get_moto_show($moto_id),
                'commentaires'=>$mc->get_commentaires_recus_moto($moto_id),
                'moy_notes'=>$mc->get_moy_notes_recues_moto($moto_id),
@@ -51,7 +84,17 @@ class Controller_moto extends Controller
                'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
                'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id),
                'is_favori'=>$m->get_is_favori($moto_id),
-               'reservations'=>$mr->get_reservations($moto_id)
+               'mois_du_jour'=>$mois_du_jour,
+               'jours_reserves'=>$jours_reserves,
+               'mois_actuel'=>$mois_actuel,
+               'fin_mois_actuel'=>$fin_mois_actuel,
+               'annee_du_jour'=>$annee_du_jour,
+               'mois_du_jour_suivant'=>$mois_du_jour_suivant,
+               'annee_du_jour_suivante'=>$annee_du_jour_suivante,
+               'mois_suivant'=>$mois_suivant,
+               'fin_mois_suivant'=>$fin_mois_suivant
+
+            //    'reservations'=>$mr->get_reservations($moto_id)
             ];
         $this->render("moto_show",$data);
     }

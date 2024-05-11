@@ -9,6 +9,7 @@
 var_dump($reservations);
 
 ?>
+<div id="moto_show_container">
 <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
@@ -226,8 +227,86 @@ var_dump($reservations);
 
                                     <div class="mb-5 w-75">
                                         <p class="lead fw-normal mb-1">Disponibilités</p>
-                                        <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between">
-                                            CALENDRIER
+                                        <div class="p-4 border border-solid  border-2 rounded d-flex flex-column">
+                                        
+                                        <h2><?= $mois_du_jour ?> <?= $annee_du_jour ?></h2>
+
+                                            <table>
+                                                <thead>
+
+                                                <tr>
+                                                    <th>Lun</th>
+                                                    <th>Mar</th>
+                                                    <th>Mer</th>
+                                                    <th>Jeu</th>
+                                                    <th>Ven</th>
+                                                    <th>Sam</th>
+                                                    <th>Dim</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                
+                                                
+                                                while ($mois_actuel <= $fin_mois_actuel) {
+                                                    echo "<tr>";
+
+                                                    for ($jour_semaine = 1; $jour_semaine <= 7; $jour_semaine++) {
+                                                    echo "<td";
+                                                    if (in_array($mois_actuel->format('Y-m-d'), $jours_reserves)) {
+                                                        echo " class='jour-reserve'";
+                                                    }
+                                                    echo ">" . $mois_actuel->format('j') . "</td>";
+
+                                                    $mois_actuel->modify('+1 day');
+                                                    }
+                                                    echo "</tr>";
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+
+                                        <h2 class="mt-3"><?= $mois_du_jour_suivant ?> <?= $annee_du_jour_suivante ?></h2>
+
+                                            <table>
+                                                <thead>
+
+                                                <tr>
+                                                    <th>Lun</th>
+                                                    <th>Mar</th>
+                                                    <th>Mer</th>
+                                                    <th>Jeu</th>
+                                                    <th>Ven</th>
+                                                    <th>Sam</th>
+                                                    <th>Dim</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php
+                                                
+                                                
+                                                while ($mois_suivant <= $fin_mois_suivant) {
+                                                    echo "<tr>";
+
+                                                    for ($jour_semaine = 1; $jour_semaine <= 7; $jour_semaine++) {
+                                                    echo "<td";
+                                                    if (in_array($mois_suivant->format('Y-m-d'), $jours_reserves)) {
+                                                        echo " class='jour-reserve'";
+                                                    }
+                                                    echo ">" . $mois_suivant->format('j') . "</td>";
+
+                                                    $mois_suivant->modify('+1 day');
+                                                    }
+                                                    echo "</tr>";
+                                                }
+                                                ?>
+                                                </tbody>
+                                            </table>
+
+
+
+
+
                                         </div>
                                     </div>
 
@@ -244,5 +323,5 @@ var_dump($reservations);
     </div>
 </div>
 
-
+</div>
 
