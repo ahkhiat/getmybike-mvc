@@ -5,6 +5,7 @@
 // var_dump($nbr_notes);
 // var_dump($moy_notes_user);
 // var_dump($nbr_notes_user);
+var_dump($is_favori);
 
 ?>
 <div class="modal-dialog modal-xl">
@@ -25,14 +26,34 @@
                                     <div class="card-body p-1 border border-solid border-2 rounded d-flex flex-column">
                                         <div class="card w-75 border-0">
                                             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                                <img src="./Content/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 400px; z-index: 1">
+                                                <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 400px; z-index: 1">
                                             </div>
 
                                             <div class="card-body">
                                                 <h2><?= $moto[0]->modele_libelle ?> </h2>
                                                 <p class="card-text small text-muted mb-0 ps-3"><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes[0]->moyenne ?> /5 (<?= $nbr_notes[0]->nbr_notes ?>)</p>
+
+                                                <?php
+                                                    if($is_favori == 0) {
+                                                    echo '
+                                                    <a href="?controller=moto&action=favori&moto_id='. $moto[0]->moto_id .'" class="btn btn-outline-danger btn-sm mt-3"><i class="fa-regular fa-heart"></i></a>
+                                                    ';
+                                                    } 
+                                                
+                                                    elseif($is_favori == 1) {
+                                                    echo '
+                                                    <a href="?controller=moto&action=unfavori&moto_id='. $moto[0]->moto_id .'" class="btn btn-outline-danger btn-sm mt-3"><i class="fa-solid fa-check"></i></a>
+
+                                                        ';
+                                                    }
+                                                
+                                                ?>
+
+
                                             </div>
+
                                         </div>
+
                                     </div>
 
                                     <!-- ------------------------- prix et bouton reserver ------------------------ -->

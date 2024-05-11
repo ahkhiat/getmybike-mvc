@@ -198,6 +198,9 @@
                       ?>
 
                     </span></p>
+
+
+                <!-- /* ----------------------------- container motos ---------------------------- */ -->
                   <div class="d-flex">
                     <?php foreach ($motos as $moto): ?>
                       <!-- <?php var_dump($moto) ?> -->
@@ -205,8 +208,10 @@
                         
                         <div class="card-body">
                           <h5 class="card-title"><?= $moto->marque_libelle ?>   <?= $moto->modele_libelle ?></h5>
+                          <img src="./Public/img/moto/<?= $moto->moto_image_name ?>" alt="" width="150px" class="rounded">
                           <p class="card-text"><i class="fa-solid fa-star" style="color: orange;"></i> 
                            <?= $moto->moyenne_notes ?> /5 ( <?= $moto->nbr_notes ?>)</p>
+
                           <div class="d-flex justify-content-between">
                             <a href="?controller=moto&action=moto_show&moto_id=<?= $moto->moto_id ?>"
                               class="btn btn-outline-warning btn-sm">Fiche moto</a>

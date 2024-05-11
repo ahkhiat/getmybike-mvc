@@ -36,8 +36,7 @@
   <li class="nav-item">
     <?php    // ------------ Display if user is ADMIN -------------------
       if(isset($_SESSION["roles"]) && $_SESSION["roles"]=="admin")  
-      {echo "<a class='nav-link text-danger' id='admin'><span class='btn btn-outline-secondary rounded-pill disabled'>Mode Manager</span></a>";} 
-      else {echo "<a class='nav-link text-danger' id='admin'><span class='btn btn-outline-secondary rounded-pill disabled'>Mode Vendeur</span></a>";} 
+      {echo "<a class='nav-link text-danger' id='admin'><span class='btn btn-outline-secondary rounded-pill disabled'>Mode Admin</span></a>";}  
     ?>
   </li>
   <li class="nav-item dropdown ">
@@ -65,6 +64,7 @@
       <hr class="dropdown-divider">
 
       <li><a class="dropdown-item" href="?controller=user&action=user_profile">Profil</a></li>
+      <li><a class="dropdown-item" href="?controller=moto&action=motos_favorites">Motos favorites</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>

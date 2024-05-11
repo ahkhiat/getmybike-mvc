@@ -1,5 +1,5 @@
 <?php
-var_dump($moto);
+// var_dump($moto);
 ?>
 <div id="moto_update_container">
 
@@ -8,8 +8,8 @@ var_dump($moto);
         <form action="?controller=moto&action=moto_picture" class="img-form" id="img_form"
                 enctype="multipart/form-data" method="POST">
             <div class="upload-moto">
-                <img src="Public/img/moto/<?= $moto[0]->image_name ?>" width=125 height=125 alt=""
-                title="<?= $moto[0]->image_name ?>">
+                <img src="Public/img/moto/<?= $moto[0]->moto_image_name ?>" width=125 height=125 alt=""
+                title="<?= $moto[0]->moto_image_name ?>">
 
                 <div class="round">
                 <input type="hidden" name="moto_id" value="<?= $moto[0]->moto_id ?>">

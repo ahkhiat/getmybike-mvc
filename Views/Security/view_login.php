@@ -3,7 +3,7 @@
   
 
 // var_dump($identification[0]);
-var_dump($proprietaire);
+// var_dump($proprietaire);
 
     // $_SESSION['email']  = $identification[0]->email;
     // $_SESSION['lastname']  = $identification[0]->lastname;
@@ -26,4 +26,4 @@ var_dump($proprietaire);
 
     
     ?>
-<!-- <script>window.location.href="?controller=home&action=home"</script> -->
+<script>window.location.href="?controller=home&action=home"</script>

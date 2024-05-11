@@ -132,8 +132,8 @@ class Controller_user extends Controller
             $mimeType = finfo_file($finfo, $tmpName);
 
             //image validation by type & by MIME
-            $validImageExtension = ['jpg', 'jpeg', 'png'];
-            $validMimeType = ["image/jpeg", "image/jpg", "image/gif", "image/png", "image/svg+xml"];
+            $validImageExtension = ['jpg', 'jpeg', 'png', 'webp'];
+            $validMimeType = ["image/jpeg", "image/jpg", "image/gif", "image/png", "image/svg+xml", 'image/webp'];
             
             $imageExtension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
 
@@ -183,7 +183,7 @@ class Controller_user extends Controller
                     $image->destroy();
                 } else {
                     $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa').".".$imageExtension;
-                    move_uploaded_file($tmpName, 'Public/img/user' . $newImageName);
+                    move_uploaded_file($tmpName, 'Public/img/user/' . $newImageName);
                 }
 
                 $m=User::get_model();

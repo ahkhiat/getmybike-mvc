@@ -59,13 +59,6 @@ class Moto extends Model
     {
 
         try {
-            // $requete = $this->bd->prepare('SELECT * 
-            //                                FROM moto mt
-            //                                JOIN modele md ON mt.modele_id = md.modele_id
-            //                                JOIN marque mq ON md.marque_id = mq.marque_id
-            //                                JOIN proprietaire p ON mt.proprietaire_id = p.proprietaire_id
-            //                                JOIN user u ON u.user_id = p.user_id
-            //                                WHERE u.user_id = :mid  ');
 
             $requete = $this->bd->prepare('SELECT *, 
                                         (SELECT ROUND((SUM(note_moto)/COUNT(note_moto)), 2) AS moyenne 
@@ -235,7 +228,68 @@ class Moto extends Model
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
     }
+
+    public function set_favori($moto_id)
+    {
+        try {
+            $requete = $this->bd->prepare('INSERT INTO favori (user_id, moto_id)
+            VALUES (:usid, :mid)');
+            $requete->execute(array(':usid' => $_SESSION['id'], ':mid' => $moto_id));
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+    public function set_unfavori($moto_id)
+    {
+        try {
+            $requete = $this->bd->prepare('DELETE FROM favori WHERE user_id = :usid AND  moto_id = :mid');
+            $requete->execute(array(':usid' => $_SESSION['id'], ':mid' => $moto_id));
+            $count = $requete->fetchColumn();
+            return $count;
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+    public function get_is_favori($moto_id)
+    {
+        try {
+            
+            $requete = $this->bd->prepare('SELECT COUNT(*) FROM favori WHERE user_id = :usid AND moto_id = :mid');
+            $requete->execute(array(':usid' => $_SESSION['id'], ':mid' => $moto_id));
+            $count = $requete->fetchColumn();
+            // return $count > 0;
+            if ($count > 0) {
+                return 1; // when followed_id is followed by follower_id
+            } else {
+                return 0; // when followed_id is NOT followed by follower_id
+            }
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
    
+    public function get_motos_favorites()
+    {
+        try {
+            $requete = $this->bd->prepare('SELECT * 
+                                           FROM favori f
+                                           JOIN moto m ON f.moto_id = m.moto_id
+                                           JOIN modele md ON m.modele_id = md.modele_id
+                                           JOIN marque mar ON md.marque_id = mar.marque_id
+                                           WHERE f.user_id = :usid
+                                           ');
+            $requete->execute(array(':usid' => $_SESSION['id']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
 
 
 }
