@@ -227,9 +227,9 @@ var_dump($reservations);
 
                                     <div class="mb-5 w-75">
                                         <p class="lead fw-normal mb-1">Disponibilités</p>
-                                        <div class="p-4 border border-solid  border-2 rounded d-flex flex-column">
-                                        
-                                        <h2><?= $mois_du_jour ?> <?= $annee_du_jour ?></h2>
+                                        <div class="p-4 border border-solid  border-2 rounded d-flex flex-md-row flex-column">
+                                        <div class="calendrier1 mb-3 me-3">
+                                            <h2><?= $mois_du_jour ?> <?= $annee_du_jour ?></h2>
 
                                             <table>
                                                 <thead>
@@ -265,8 +265,9 @@ var_dump($reservations);
                                                 ?>
                                                 </tbody>
                                             </table>
-
-                                        <h2 class="mt-3"><?= $mois_du_jour_suivant ?> <?= $annee_du_jour_suivante ?></h2>
+                                            </div>
+                                            <div class="calendrier2">
+                                            <h2><?= $mois_du_jour_suivant ?> <?= $annee_du_jour_suivante ?></h2>
 
                                             <table>
                                                 <thead>
@@ -302,7 +303,7 @@ var_dump($reservations);
                                                 ?>
                                                 </tbody>
                                             </table>
-
+                                            </div>
 
 
 

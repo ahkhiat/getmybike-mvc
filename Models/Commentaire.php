@@ -157,6 +157,26 @@ class Commentaire extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function set_commentaire_add($reservation_id)
+    {
+
+        try {
+            $requete = $this->bd->prepare('INSERT INTO commentaire (commentaire_id, reservation_id, note_moto, texte_moto,
+                                           note_proprio, texte_proprio) VALUES (NULL, :rid, :notem, :textm, :notep, :textp)
+
+                                           ');
+            $requete->execute(array(':rid'=> $reservation_id,
+                                    ':notem'=> $_POST['note_moto'],
+                                    ':textm' => $_POST['texte_moto'],
+                                    ':notep'=> $_POST['note_proprio'],
+                                    ':textp'=> $_POST['texte_proprio']));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
 
 
    

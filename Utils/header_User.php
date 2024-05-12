@@ -68,6 +68,10 @@
       <li>
         <hr class="dropdown-divider">
       </li>
+      <li><a class="dropdown-item" href="?controller=reservation&action=mes_reservations" >Mes réservations</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
       <li><a class="dropdown-item" href="?controller=security&action=disconnection">Deconnexion</a></li>
     </ul>
   </li>

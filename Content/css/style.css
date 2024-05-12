@@ -469,3 +469,10 @@ font-family: 'EB Garamond', serif;
 .badge-online-public-profile {
   transform: translate(-25px, 50px);
 }
+
+/* -------------------------------------------------------------------------- */
+/*                              mes reservations                              */
+/* -------------------------------------------------------------------------- */
+.vignette-resa {
+  width: 100px;
+}
