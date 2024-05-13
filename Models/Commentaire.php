@@ -177,6 +177,28 @@ class Commentaire extends Model
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function is_commentaire_exists($reservation_id)
+    {
+        try {
+            $requete = $this->bd->prepare('SELECT COUNT(*) 
+                                           FROM commentaire 
+                                           WHERE reservation_id = :rid
+                                    
+                                           ');
+            $requete->execute(array(':rid'=> $reservation_id));
+            $count = $requete->fetchColumn();
+
+            if ($count > 0) {
+                return 1; 
+            } else {
+                return 0; 
+            }
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+    }
+
 
 
    

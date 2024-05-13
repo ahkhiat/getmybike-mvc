@@ -21,6 +21,25 @@ class Controller_reservation extends Controller
     }
     public function action_mes_reservations()
     {
+        $m=Reservation::get_model();
+        $mc=Commentaire::get_model();
+
+        $user_id = $_SESSION['id'];
+
+        $date_now = new DateTime('now');
+
+        $reservations = $m->get_mes_reservations($user_id);
+        foreach($reservations as $reservation){
+            $reservation_id = $reservation->reservation_id;
+            $reservation->is_commented = $mc->is_commentaire_exists($reservation_id);
+        }
+
+        $data=['reservations'=>$reservations,
+               'date_now'=>$date_now];
+        $this->render("mes_reservations", $data);
+    }
+    public function action_reservations_mes_motos()
+    {
         $user_id = $_SESSION['id'];
 
         $date_now = new DateTime('now');
@@ -28,9 +47,9 @@ class Controller_reservation extends Controller
         
 
         $m=Reservation::get_model();
-        $data=['reservations'=>$m->get_mes_reservations($user_id),
+        $data=['reservations'=>$m->get_reservations_mes_motos($user_id),
                'date_now'=>$date_now];
-        $this->render("mes_reservations", $data);
+        $this->render("reservations_mes_motos", $data);
     }
 
 }

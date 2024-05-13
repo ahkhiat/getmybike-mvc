@@ -11,12 +11,8 @@ class Controller_moto extends Controller
     {
         $this->render('home');
     }
-    // public function action_all_motos()
-    // {
-    //     $m=Moto::get_model();
-    //     $data=['motos'=>$m->get_all_motos()];
-    //     $this->render("all_motos",$data);
-    // }
+    
+
     public function action_all_motos()
     {
         $m=Moto::get_model();
@@ -69,6 +65,7 @@ class Controller_moto extends Controller
         foreach ($reservations as $reservation) {
             $date_debut = new DateTime($reservation->date_debut);
             $date_fin = new DateTime($reservation->date_fin);
+            $date_fin->modify('+1 day');
 
             $interval = new DateInterval('P1D'); 
             $periode = new DatePeriod($date_debut, $interval, $date_fin);
@@ -102,14 +99,16 @@ class Controller_moto extends Controller
     public function action_moto_add()
     {
         $m=Moto::get_model();
-        $data=['modeles'=>$m->get_all_modeles()];
+        $data=['modeles'=>$m->get_all_modeles(),
+               'message'=> 'la moto a été ajoutée avec succès !'];
         $this->render("moto_add", $data);
     }
     public function action_moto_add_request()
     {
         $m=Moto::get_model();
-        $m->set_moto_add_request();
-        // $this->render("moto_add");
+        $data=[$m->set_moto_add_request(),
+               'message' => 'La moto a été ajoutée !'];
+        $this->render("moto_result", $data);
     }
 
     public function action_moto_update()
@@ -124,8 +123,18 @@ class Controller_moto extends Controller
     public function action_moto_update_request()
     {
         $m=Moto::get_model();
-        $m->get_moto_update_request();
-        $this->render("all_motos");
+        $data = [$m->get_moto_update_request(),
+                 'message' => 'La moto a été mise à jour !'];
+        $this->render("moto_result", $data);
+    }
+    public function action_moto_delete()
+    {
+        $moto_id = $_POST['moto_id'];
+
+        $m=Moto::get_model();
+        $data=[$m->set_moto_delete($moto_id),
+               'message'=>'la moto a été supprimée'];
+        $this->render("moto_result", $data);
     }
 
     public function action_favori()

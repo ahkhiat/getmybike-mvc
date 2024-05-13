@@ -38,6 +38,27 @@ class Reservation extends Model
         $count = $requete->fetchColumn();
         return $count;
     }
+    public function get_reservations_mes_motos($user_id)
+    {
+
+        try {
+            $requete = $this->bd->prepare('SELECT * 
+                                           FROM reservation r
+                                           JOIN moto m ON r.moto_id = m.moto_id
+                                           JOIN proprietaire p ON m.proprietaire_id = p.proprietaire_id
+                                           JOIN modele md ON m.modele_id = md.modele_id
+                                           JOIN marque mq ON md.marque_id = mq.marque_id 
+                                           WHERE p.user_id = :id
+                                           ');
+            $requete->execute(array(
+                                    'id'=> $user_id,
+                                    ));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
     public function get_mes_reservations($user_id)
     {
 

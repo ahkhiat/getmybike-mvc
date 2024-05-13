@@ -55,6 +55,20 @@ class Moto extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function set_moto_delete($moto_id)
+    {
+
+        try {
+            $requete = $this->bd->prepare('DELETE FROM moto WHERE moto_id = :mid');
+            $requete->execute(array(':mid'=> $moto_id));
+            
+        } catch (PDOException $e) {
+            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        }
+        return $requete->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function get_all_motos_user()
     {
 

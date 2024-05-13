@@ -47,6 +47,8 @@ liste des devs:
 - creation d'un commentaire avec un formulaire sous forme de modal sur les fiches
     reservations.
 
+- ajout bouton delete sur fiches moto
+
 
 Le 12 mai, retour sur le continent.
 

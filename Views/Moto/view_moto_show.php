@@ -6,7 +6,7 @@
 // var_dump($moy_notes_user);
 // var_dump($nbr_notes_user);
 // var_dump($is_favori);
-var_dump($reservations);
+// var_dump($reservations);
 
 ?>
 <div id="moto_show_container">
@@ -38,7 +38,7 @@ var_dump($reservations);
                                                 <?php
                                                     if($is_favori == 0) {
                                                     echo '
-                                                    <a href="?controller=moto&action=favori&moto_id='. $moto[0]->moto_id .'" class="btn btn-outline-danger btn-sm mt-3"><i class="fa-regular fa-heart"></i></a>
+                                                    <a href="?controller=moto&action=favori&moto_id='. $moto[0]->moto_id .'" class="btn btn-danger btn-sm mt-3"><i class="fa-regular fa-heart"> Ajouter aux favoris</i></a>
                                                     ';
                                                     } 
                                                 

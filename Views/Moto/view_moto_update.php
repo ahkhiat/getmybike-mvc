@@ -95,7 +95,13 @@
                 <textarea  class="form-control" id="description" name="description" rows="4"><?= $moto[0]->description ?></textarea>
             </div>
             <input type="hidden" name="moto_id" value="<?= $moto[0]->moto_id ?>">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary mb-3">Valider</button>
+        </form>
+
+        <!-- /* ------------------------- formulaire pour delete ------------------------- */ -->
+        <form action="?controller=moto&action=moto_delete" method="POST" id="moto_delete_form">
+            <input type="hidden" name="moto_id" class="form-control" id="hide2" value=<?= $moto[0]->moto_id  ?> >
+            <button type="submit" class="btn btn-danger  delete-button mb-3">Supprimer la moto</button>
         </form>
 
     </div>

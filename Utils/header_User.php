@@ -7,7 +7,6 @@
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="?controller=moto&action=all_motos">Toutes les motos</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="/moto/card">Cards</a></li>
     </ul>
   </li>
 
@@ -68,7 +67,9 @@
       <li>
         <hr class="dropdown-divider">
       </li>
-      <li><a class="dropdown-item" href="?controller=reservation&action=mes_reservations" >Mes réservations</a></li>
+      <li><a class="dropdown-item" href="?controller=reservation&action=mes_reservations" >Mes réservation</a></li>
+
+      <li><a class="dropdown-item" href="?controller=reservation&action=reservations_mes_motos" >Réservations de mes motos</a></li>
       <li>
         <hr class="dropdown-divider">
       </li>

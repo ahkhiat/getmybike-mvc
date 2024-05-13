@@ -7,13 +7,13 @@
 
 
   
-<section id="gallery">
-    <h1>Mes réservations</h1> 
+<section id="gallery"> 
+    <h1>Réservations de mes motos</h1>
     <div class="container"> 
         <div class="row">
 
         <?php foreach($reservations as $reservation): ?>
-	    <?php var_dump($reservation); ?> 
+	    <!-- <?php var_dump($reservation); ?>  -->
 
             <div class="col-lg-3 col-md-3 col-sm-5 mb-4">
                 <div class="card">
@@ -48,14 +48,13 @@
                             <p class="card-text">Du : <?= date('d m Y', strtotime($reservation->date_debut))?></p>
                             <p class="card-text">Au : <?= date('d m Y', strtotime($reservation->date_fin))?></p>
                             
-                            <?php if((!$reservation->is_commented) && ($date_now > new DateTime($reservation->date_fin))): ?>
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalComment">
+
+                            <!-- <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalComment">
                                 Laisser un commentaire
-                            </button>
-                            <?php endif; ?>
+                            </button> -->
 
                             <!-- Modal -->
-                            <div class="modal fade" id="ModalComment" tabindex="-1"  aria-hidden="true">
+                            <!-- <div class="modal fade" id="ModalComment" tabindex="-1"  aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered ">
                                     <div class="modal-content">
                                         <form action="?controller=commentaire&action=commentaire_add" method="POST">
@@ -64,8 +63,6 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body ">
-                                            <?php var_dump($reservation)?>
-
                                                 <div class="d-flex justify-content-around">
                                                     <div>
                                                         <label for="date-debut" class="form-label">Note moto</label>
@@ -95,14 +92,14 @@
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                                                     <button type="submit" class="btn btn-primary">Laisser mon commentaire !</button>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <!-- /* ----------------------------- fin modal body ----------------------------- */ -->
-                                        </form>
-                                    </div>
+                                        <!-- </form>
+                                    </div> -->
                                     <!-- /* ---------------------------- fin modal content --------------------------- */ -->
-                                </div>
+                                <!-- </div> -->
                                 <!-- /* ------------------------ fin modal content dialog ------------------------ */ -->
-                            </div>
+                            <!-- </div> -->
                             <!-- Fin de la Modal --> 
                         </div>    
                         <!-- /* ------------------------------ fin card body ----------------------------- */ -->
