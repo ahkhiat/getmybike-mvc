@@ -26,6 +26,7 @@ class Controller_security extends Controller
     {
         $ms=Security::get_model();
         $mu=User::get_model();
+        $mc=Commentaire::get_model();
 
         // $data = ['user'=>$ms->get_login(),
         //          'proprietaire'=>$mu->get_proprietaire()];
@@ -38,8 +39,13 @@ class Controller_security extends Controller
 
             $user_id = $user->user_id;
 
+            $nb_comments = $mc->is_reservation_sans_commentaire($user_id);
+
+            $_SESSION['notifications'] = $nb_comments;
+
             $proprietaire = $mu->get_proprietaire($user_id);
-            $data = ['user' => $user, 'proprietaire' => $proprietaire];
+            $data = ['user' => $user, 
+                     'proprietaire' => $proprietaire];
             $this->render("login", $data);
         }
     }

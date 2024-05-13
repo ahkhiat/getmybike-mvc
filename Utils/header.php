@@ -33,6 +33,7 @@ session_start();
   <script type="module" src="./Content/js/script.js" defer></script>
   <script src="./Content/js/login_form_verify.js" defer></script>
   <script src="./Content/js/registration_form_verify.js" defer></script> 
+  <script src="./Content/js/form-preresa.js" defer></script> 
 
 
   <title>Get My Bike</title>

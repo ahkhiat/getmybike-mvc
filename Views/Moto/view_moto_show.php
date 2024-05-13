@@ -70,13 +70,13 @@
                                         <div class="modal fade" id="ModalDates" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered ">
                                                 <div class="modal-content">
-                                                    <form action="?controller=reservation&action=reserver" method="POST">
+                                                    <form action="?controller=reservation&action=prereserver" method="POST">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Je veux reserver cette moto</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body ">
-                                                            <div class="d-flex justify-content-around">
+                                                            <div class="col-xl-6 col-md-6 d-flex flex-column mx-auto">
                                                                 <div>
                                                                     <label for="date-debut" class="form-label">Date début</label>
                                                                     <input type="date" class="form-control" id="date_debut" name="date_debut">
@@ -85,8 +85,9 @@
                                                                     <label for="date_fin" class="form-label">Date fin</label>
                                                                     <input type="date" class="form-control" id="date_fin" name="date_fin">
                                                                     <input type="hidden" class="form-control" id="moto_id" name="moto_id" value="<?= $moto[0]->moto_id?>">
-
+                                                                    <input type="hidden" class="form-control" id="prix_jour" name="prix_jour" value="<?= $moto[0]->prix_jour?>">
                                                                 </div>
+                                                                
 
                                                             </div>
                                                             <div style="overflow:hidden;">
@@ -94,7 +95,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                                <button type="submit" class="btn btn-primary">Reserver !</button>
+                                                                <button type="submit" class="btn btn-primary">Confirmer</button>
                                                             </div>
                                                         </div>
                                                     </form>

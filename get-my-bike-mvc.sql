@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : lun. 13 mai 2024 à 07:01
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.0.28
+-- Hôte : 127.0.0.1:3307
+-- Généré le : lun. 13 mai 2024 à 16:58
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,13 +42,15 @@ CREATE TABLE `commentaire` (
 --
 
 INSERT INTO `commentaire` (`commentaire_id`, `reservation_id`, `note_moto`, `texte_moto`, `note_proprio`, `texte_proprio`, `created_at`) VALUES
-(21, 21, 4, 'Excellente Moto !', 1, 'Il a su être rassurant, très bonne expérience !', '2024-03-13 15:57:11'),
-(22, 22, 5, 'Vraiment une moto très bien entretenue et très agréable à conduire !', 4, 'Serieux et ponctuel, parfait !', '2024-04-23 10:32:34'),
-(23, 23, 3, 'Je me suis regalé, à refaire !', 1, 'Il a su être rassurant, très bonne expérience !', '2024-02-05 06:22:54'),
-(24, 24, 4, 'Malgré le fait de ne pas avoir conduit pendant des années, la plaisir était toujours là !', 3, 'Une expérience hors-norme grâce à elle, à recommander !', '2024-05-02 10:29:11'),
-(25, 25, 2, 'Très bon véhicule !', 4, 'Personne très sympathique !', '2024-04-19 17:50:29'),
-(26, 26, 3, 'gnagnagna', 3, 'gnignigni', '2024-03-25 08:58:43'),
-(30, 31, 5, 'Super', 5, 'Super', '2024-05-12 16:57:13');
+(1, 21, 4, 'Excellente Moto !', 1, 'Il a su être rassurant, très bonne expérience !', '2024-03-13 15:57:11'),
+(2, 22, 5, 'Vraiment une moto très bien entretenue et très agréable à conduire !', 4, 'Serieux et ponctuel, parfait !', '2024-04-23 10:32:34'),
+(3, 23, 3, 'Je me suis regalé, à refaire !', 1, 'Il a su être rassurant, très bonne expérience !', '2024-02-05 06:22:54'),
+(4, 24, 4, 'Malgré le fait de ne pas avoir conduit pendant des années, la plaisir était toujours là !', 3, 'Une expérience hors-norme grâce à elle, à recommander !', '2024-05-02 10:29:11'),
+(5, 25, 2, 'Très bon véhicule !', 4, 'Personne très sympathique !', '2024-04-19 17:50:29'),
+(7, 31, 5, 'Super', 5, 'Super', '2024-05-12 16:57:13'),
+(15, 26, 5, 'super', 5, 'super', '2024-05-13 15:13:28'),
+(16, 32, 1, 'nul', 1, 'nul', '2024-05-13 15:14:07'),
+(17, 34, 5, 'super', 5, 'cette personne est géniale', '2024-05-13 15:16:20');
 
 -- --------------------------------------------------------
 
@@ -68,8 +70,10 @@ CREATE TABLE `favori` (
 
 INSERT INTO `favori` (`user_id`, `moto_id`, `created_at`) VALUES
 (23, 28, '2024-05-12 14:10:20'),
+(26, 24, '2024-05-13 15:14:28'),
 (28, 27, '2024-05-11 15:58:35'),
-(28, 28, '2024-05-11 15:18:59');
+(28, 28, '2024-05-11 15:18:59'),
+(29, 27, '2024-05-13 15:15:29');
 
 -- --------------------------------------------------------
 
@@ -207,7 +211,10 @@ INSERT INTO `reservation` (`reservation_id`, `user_id`, `moto_id`, `date_debut`,
 (25, 23, 24, '2024-05-16 14:57:47', '2024-05-18 14:57:47', '2024-05-11 18:40:45'),
 (26, 26, 22, '2024-05-07 16:02:01', '2024-05-07 16:02:01', '2024-05-11 18:40:45'),
 (30, 23, 24, '2024-06-09 00:00:00', '2024-06-13 00:00:00', '2024-05-11 23:38:16'),
-(31, 23, 28, '2024-06-19 00:00:00', '2024-06-20 00:00:00', '2024-05-12 14:10:41');
+(31, 23, 28, '2024-06-19 00:00:00', '2024-06-20 00:00:00', '2024-05-12 14:10:41'),
+(32, 26, 24, '2024-05-02 11:30:52', '2024-05-04 11:30:52', '2024-05-13 11:31:33'),
+(33, 23, 21, '2024-05-02 00:00:00', '2024-05-04 00:00:00', '2024-05-13 12:26:36'),
+(34, 29, 27, '2024-05-10 00:00:00', '2024-05-11 00:00:00', '2024-05-13 15:15:42');
 
 -- --------------------------------------------------------
 
@@ -240,13 +247,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `email`, `pswd`, `roles`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `telephone`, `created_at`, `updated_at`, `is_verified`, `image_name`, `date_naissance`, `bio`, `lastActivityTime`) VALUES
-(22, 'aurelie@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Besnard', 'Aurélie', '3, impasse Madeleine Schneider', '22 63', 'Grenier', '0967597826', '2024-05-06 17:00:33', NULL, 0, 'Besnard_2024.05.11_01.23.48pm.png', '1977-05-05', 'Rerum non quisquam dolores eaque beatae eum atque.', '2024-05-11 13:23:08'),
-(23, 'thomas@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Millet', 'Thomas', 'avenue Guyot', '10273', 'Arles', '0612345699', '2024-05-06 17:00:33', '2024-05-11 16:39:14', 1, 'Millet_2024.05.11_01.36.20pm.jpeg', '1988-08-15', 'Je n\'aime pas écrire de description, cependant je vais faire un petit effort si ça peut permettre qu\'on me loue ma moto.', '2024-05-11 16:38:28'),
+(22, 'aurelie@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Besnard', 'Aurélie', '3, impasse Madeleine Schneider', '22 63', 'Grenier', '0967597826', '2024-05-06 17:00:33', NULL, 0, 'Besnard_2024.05.11_01.23.48pm.png', '1977-05-05', 'Rerum non quisquam dolores eaque beatae eum atque.', '2024-05-13 11:11:29'),
+(23, 'thomas@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Millet', 'Thomas', 'avenue Guyot', '10273', 'Arles', '0612345699', '2024-05-06 17:00:33', '2024-05-11 16:39:14', 1, 'Millet_2024.05.11_01.36.20pm.jpeg', '1988-08-15', 'Je n\'aime pas écrire de description, cependant je vais faire un petit effort si ça peut permettre qu\'on me loue ma moto.', '2024-05-13 11:11:44'),
 (24, 'renee@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Marie', 'Renée', '4, chemin Raymond Vasseur', '56 63', 'Moreau', '+33 (0)1 44 50 28 10', '2024-05-06 17:00:33', NULL, 0, 'user_1144760.png', '2002-12-14', 'Ut distinctio exercitationem distinctio quisquam animi et enim.', '2024-05-07 13:37:55'),
 (25, 'lucas@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Hoarau', 'Lucas', '69, avenue Odette Thomas', '12901', 'Roussel', '04 65 58 50 33', '2024-05-06 17:00:33', NULL, 1, 'user_1144760.png', '1978-09-11', 'Veniam unde assumenda cum fugiat iure nihil.', '2024-05-07 13:37:55'),
-(26, 'ahkhiat@hotmail.com', '$2y$10$xMDoaIZcTw49gda6j31GeO3jmbaHvpKHKZd.hM6tY3yqJJSD6c6xG', 'admin', 'Leung', 'Thierry', '15 rue des roses', '13005', 'Marseille', '0612345678', '0000-00-00 00:00:00', NULL, NULL, 'Leung_2024.05.11_01.37.02pm.png', '2000-01-01', NULL, '2024-05-11 13:36:37'),
+(26, 'ahkhiat@hotmail.com', '$2y$10$xMDoaIZcTw49gda6j31GeO3jmbaHvpKHKZd.hM6tY3yqJJSD6c6xG', 'admin', 'Leung', 'Thierry', '15 rue des roses', '13005', 'Marseille', '0612345678', '0000-00-00 00:00:00', NULL, NULL, 'Leung_2024.05.11_01.37.02pm.png', '2000-01-01', NULL, '2024-05-13 15:16:46'),
 (27, 'macron@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', 'user', 'Macron', 'Manu', NULL, NULL, NULL, NULL, '2024-05-10 08:10:49', NULL, NULL, NULL, NULL, NULL, '2024-05-10 18:22:51'),
-(28, 'sophie@gmail.com', '$2y$10$s1FR3jUrPn.FhOzTPIs2PuFzvDsFNnixXV5DoftL/amTFcuKQYJ06', 'user', 'Leung', 'Sophie', '99 bd Jeanne d\'Arc', '13005', 'Marseille', '0612345655', '2024-05-10 18:23:40', '2024-05-11 16:38:13', NULL, 'Leung_2024.05.11_08.34.51am.webp', '2009-12-10', 'J\'aime l\'ecole et j\'aime les motos', '2024-05-11 13:38:31');
+(28, 'sophie@gmail.com', '$2y$10$s1FR3jUrPn.FhOzTPIs2PuFzvDsFNnixXV5DoftL/amTFcuKQYJ06', 'user', 'Leung', 'Sophie', '99 bd Jeanne d\'Arc', '13005', 'Marseille', '0612345655', '2024-05-10 18:23:40', '2024-05-11 16:38:13', NULL, 'Leung_2024.05.11_08.34.51am.webp', '2009-12-10', 'J\'aime l\'ecole et j\'aime les motos', '2024-05-11 13:38:31'),
+(29, 'mustapha@gmail.com', '$2y$10$oPfoEKP8YuUvWd2JloTp4.7wuNUMaXNvbrPhIhepRE6QqLbJV77sC', 'user', 'Mabrouk', 'Mustapha', NULL, NULL, NULL, NULL, '2024-05-13 15:15:13', NULL, NULL, 'Mabrouk_2024.05.13_03.16.32pm.png', NULL, NULL, '2024-05-13 15:15:13'),
+(30, 'sabri@gmail.com', '$2y$10$SVKj/Hic.iGhkjfqNzQV0eVprttSh.volinofwghI/SUOwfnLpCiO', 'user', 'Chafroud', 'Sabri', NULL, NULL, NULL, NULL, '2024-05-13 15:28:44', NULL, NULL, NULL, NULL, NULL, '2024-05-13 15:28:44');
 
 --
 -- Index pour les tables déchargées
@@ -257,6 +266,8 @@ INSERT INTO `user` (`user_id`, `email`, `pswd`, `roles`, `nom`, `prenom`, `adres
 --
 ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`commentaire_id`),
+  ADD UNIQUE KEY `reservation_id` (`reservation_id`),
+  ADD UNIQUE KEY `reservation_id_2` (`reservation_id`),
   ADD KEY `IDX_67F068BCB83297E7` (`reservation_id`);
 
 --
@@ -317,7 +328,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  MODIFY `commentaire_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `commentaire_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `marque`
@@ -335,7 +346,7 @@ ALTER TABLE `modele`
 -- AUTO_INCREMENT pour la table `moto`
 --
 ALTER TABLE `moto`
-  MODIFY `moto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `moto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `proprietaire`
@@ -347,13 +358,13 @@ ALTER TABLE `proprietaire`
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Contraintes pour les tables déchargées

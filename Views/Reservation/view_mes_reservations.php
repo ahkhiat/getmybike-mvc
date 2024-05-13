@@ -13,7 +13,9 @@
         <div class="row">
 
         <?php foreach($reservations as $reservation): ?>
-	    <?php var_dump($reservation); ?> 
+	     <?php 
+            // var_dump($reservation); 
+            ?>  
 
             <div class="col-lg-3 col-md-3 col-sm-5 mb-4">
                 <div class="card">
@@ -49,61 +51,16 @@
                             <p class="card-text">Au : <?= date('d m Y', strtotime($reservation->date_fin))?></p>
                             
                             <?php if((!$reservation->is_commented) && ($date_now > new DateTime($reservation->date_fin))): ?>
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalComment">
-                                Laisser un commentaire
-                            </button>
+
+                            <form action="?controller=commentaire&action=commentaire_add" method="POST">
+                                <input type="hidden" name="reservation_id" value="<?= $reservation->reservation_id?>">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    Laisser un commentaire
+                                </button>
+                            </form>
                             <?php endif; ?>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="ModalComment" tabindex="-1"  aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered ">
-                                    <div class="modal-content">
-                                        <form action="?controller=commentaire&action=commentaire_add" method="POST">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Je laisse un commentaire</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body ">
-                                            <?php var_dump($reservation)?>
-
-                                                <div class="d-flex justify-content-around">
-                                                    <div>
-                                                        <label for="date-debut" class="form-label">Note moto</label>
-                                                        <input type="text" class="form-control" id="note_moto" name="note_moto">
-                                                    </div>
-                                                    <div>
-                                                        <label for="date-debut" class="form-label">Commentaire Moto</label>
-                                                        <input type="text" class="form-control" id="texte_moto" name="texte_moto">
-                                                    </div>
-                                                    <div>
-                                                        <label for="date-debut" class="form-label">Note proprietaire</label>
-                                                        <input type="text" class="form-control" id="note_proprio" name="note_proprio">
-                                                    </div>
-                                                    <div>
-                                                        <label for="date-debut" class="form-label">Commentaire Propriétaire</label>
-                                                        <input type="text" class="form-control" id="texte_proprio" name="texte_proprio">
-                                                    </div>
-                                                    <div>
-                                                        <input type="hidden" class="form-control" id="reservation_id" name="reservation_id" value="<?= $reservation->reservation_id?>">
-                                                    </div>
-
-                                                </div>
-                                                <div style="overflow:hidden;">
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                    <button type="submit" class="btn btn-primary">Laisser mon commentaire !</button>
-                                                </div>
-                                            </div>
-                                            <!-- /* ----------------------------- fin modal body ----------------------------- */ -->
-                                        </form>
-                                    </div>
-                                    <!-- /* ---------------------------- fin modal content --------------------------- */ -->
-                                </div>
-                                <!-- /* ------------------------ fin modal content dialog ------------------------ */ -->
-                            </div>
-                            <!-- Fin de la Modal --> 
+                            
                         </div>    
                         <!-- /* ------------------------------ fin card body ----------------------------- */ -->
                 </div>  
