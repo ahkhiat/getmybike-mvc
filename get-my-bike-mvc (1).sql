@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3307
--- Généré le : lun. 13 mai 2024 à 16:58
+-- Généré le : mar. 14 mai 2024 à 22:49
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -71,6 +71,7 @@ CREATE TABLE `favori` (
 INSERT INTO `favori` (`user_id`, `moto_id`, `created_at`) VALUES
 (23, 28, '2024-05-12 14:10:20'),
 (26, 24, '2024-05-13 15:14:28'),
+(26, 28, '2024-05-14 22:12:08'),
 (28, 27, '2024-05-11 15:58:35'),
 (28, 28, '2024-05-11 15:18:59'),
 (29, 27, '2024-05-13 15:15:29');
@@ -247,15 +248,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `email`, `pswd`, `roles`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `telephone`, `created_at`, `updated_at`, `is_verified`, `image_name`, `date_naissance`, `bio`, `lastActivityTime`) VALUES
-(22, 'aurelie@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Besnard', 'Aurélie', '3, impasse Madeleine Schneider', '22 63', 'Grenier', '0967597826', '2024-05-06 17:00:33', NULL, 0, 'Besnard_2024.05.11_01.23.48pm.png', '1977-05-05', 'Rerum non quisquam dolores eaque beatae eum atque.', '2024-05-13 11:11:29'),
+(22, 'aurelie@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Besnard', 'Aurélie', '3, impasse Madeleine Schneider', '22 63', 'Lyon', '0967597826', '2024-05-06 17:00:33', NULL, 0, 'Besnard_2024.05.11_01.23.48pm.png', '1977-05-05', 'Rerum non quisquam dolores eaque beatae eum atque.', '2024-05-13 11:11:29'),
 (23, 'thomas@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Millet', 'Thomas', 'avenue Guyot', '10273', 'Arles', '0612345699', '2024-05-06 17:00:33', '2024-05-11 16:39:14', 1, 'Millet_2024.05.11_01.36.20pm.jpeg', '1988-08-15', 'Je n\'aime pas écrire de description, cependant je vais faire un petit effort si ça peut permettre qu\'on me loue ma moto.', '2024-05-13 11:11:44'),
-(24, 'renee@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Marie', 'Renée', '4, chemin Raymond Vasseur', '56 63', 'Moreau', '+33 (0)1 44 50 28 10', '2024-05-06 17:00:33', NULL, 0, 'user_1144760.png', '2002-12-14', 'Ut distinctio exercitationem distinctio quisquam animi et enim.', '2024-05-07 13:37:55'),
-(25, 'lucas@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Hoarau', 'Lucas', '69, avenue Odette Thomas', '12901', 'Roussel', '04 65 58 50 33', '2024-05-06 17:00:33', NULL, 1, 'user_1144760.png', '1978-09-11', 'Veniam unde assumenda cum fugiat iure nihil.', '2024-05-07 13:37:55'),
-(26, 'ahkhiat@hotmail.com', '$2y$10$xMDoaIZcTw49gda6j31GeO3jmbaHvpKHKZd.hM6tY3yqJJSD6c6xG', 'admin', 'Leung', 'Thierry', '15 rue des roses', '13005', 'Marseille', '0612345678', '0000-00-00 00:00:00', NULL, NULL, 'Leung_2024.05.11_01.37.02pm.png', '2000-01-01', NULL, '2024-05-13 15:16:46'),
-(27, 'macron@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', 'user', 'Macron', 'Manu', NULL, NULL, NULL, NULL, '2024-05-10 08:10:49', NULL, NULL, NULL, NULL, NULL, '2024-05-10 18:22:51'),
+(24, 'renee@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Marie', 'Renée', '4, chemin Raymond Vasseur', '56 63', 'Angers', '+33 (0)1 44 50 28 10', '2024-05-06 17:00:33', NULL, 0, 'user_1144760.png', '2002-12-14', 'Ut distinctio exercitationem distinctio quisquam animi et enim.', '2024-05-07 13:37:55'),
+(25, 'lucas@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', NULL, 'Hoarau', 'Lucas', '69, avenue Odette Thomas', '12901', 'Strasbourg', '04 65 58 50 33', '2024-05-06 17:00:33', NULL, 1, 'user_1144760.png', '1978-09-11', 'Veniam unde assumenda cum fugiat iure nihil.', '2024-05-07 13:37:55'),
+(26, 'ahkhiat@hotmail.com', '$2y$10$xMDoaIZcTw49gda6j31GeO3jmbaHvpKHKZd.hM6tY3yqJJSD6c6xG', 'admin', 'Leung', 'Thierry', '15 rue des roses', '13005', 'Marseille', '0612345678', '0000-00-00 00:00:00', NULL, NULL, 'Leung_2024.05.11_01.37.02pm.png', '2000-01-01', NULL, '2024-05-14 22:15:39'),
+(27, 'macron@gmail.com', '$2y$10$rv9Pevj7qSXUa9NYwmWhUO682JTPflCzI2GtOzpyUFPf8qkEguqL6', 'user', 'Macron', 'Manu', NULL, NULL, 'Nanterre', NULL, '2024-05-10 08:10:49', NULL, NULL, NULL, NULL, NULL, '2024-05-10 18:22:51'),
 (28, 'sophie@gmail.com', '$2y$10$s1FR3jUrPn.FhOzTPIs2PuFzvDsFNnixXV5DoftL/amTFcuKQYJ06', 'user', 'Leung', 'Sophie', '99 bd Jeanne d\'Arc', '13005', 'Marseille', '0612345655', '2024-05-10 18:23:40', '2024-05-11 16:38:13', NULL, 'Leung_2024.05.11_08.34.51am.webp', '2009-12-10', 'J\'aime l\'ecole et j\'aime les motos', '2024-05-11 13:38:31'),
-(29, 'mustapha@gmail.com', '$2y$10$oPfoEKP8YuUvWd2JloTp4.7wuNUMaXNvbrPhIhepRE6QqLbJV77sC', 'user', 'Mabrouk', 'Mustapha', NULL, NULL, NULL, NULL, '2024-05-13 15:15:13', NULL, NULL, 'Mabrouk_2024.05.13_03.16.32pm.png', NULL, NULL, '2024-05-13 15:15:13'),
-(30, 'sabri@gmail.com', '$2y$10$SVKj/Hic.iGhkjfqNzQV0eVprttSh.volinofwghI/SUOwfnLpCiO', 'user', 'Chafroud', 'Sabri', NULL, NULL, NULL, NULL, '2024-05-13 15:28:44', NULL, NULL, NULL, NULL, NULL, '2024-05-13 15:28:44');
+(29, 'mustapha@gmail.com', '$2y$10$oPfoEKP8YuUvWd2JloTp4.7wuNUMaXNvbrPhIhepRE6QqLbJV77sC', 'user', 'Mabrouk', 'Mustapha', NULL, NULL, 'Vitrolles', NULL, '2024-05-13 15:15:13', NULL, NULL, 'Mabrouk_2024.05.13_03.16.32pm.png', NULL, NULL, '2024-05-13 15:15:13'),
+(30, 'sabri@gmail.com', '$2y$10$SVKj/Hic.iGhkjfqNzQV0eVprttSh.volinofwghI/SUOwfnLpCiO', 'user', 'Chafroud', 'Sabri', NULL, NULL, 'La Seyne', NULL, '2024-05-13 15:28:44', NULL, NULL, NULL, NULL, NULL, '2024-05-13 15:28:44');
 
 --
 -- Index pour les tables déchargées

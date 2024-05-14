@@ -70,7 +70,7 @@ class Controller_user extends Controller
 
         $user = $mu->get_public_profile();
         
-        $user_moto_prop_id = $mt->get_user_id();
+        // $user_moto_prop_id = $mt->get_user_id();
         $user_id = $_GET['id'];
 
         $data=[

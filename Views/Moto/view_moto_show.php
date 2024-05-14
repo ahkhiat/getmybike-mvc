@@ -22,10 +22,10 @@
 
                             <div class="card-body p-4">
 
-                                <div class="rounded-top d-flex flex-row justify-content-between border border-solid border-2 rounded border-0">
+                                <div class="rounded-top d-flex flex-md-row flex-column justify-content-between border border-solid border-2 rounded border-0">
 
                                     <!-- ----------------------------- image et titre ----------------------------- -->
-                                    <div class="card-body p-1 border border-solid border-2 rounded d-flex flex-column">
+                                    <div class="card-body p-1 border border-solid border-2 border-warning rounded d-flex flex-column">
                                         <div class="card w-75 border-0">
                                             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                                                 <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 400px; z-index: 1">
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <!-- ------------------------- prix et bouton reserver ------------------------ -->
-                                    <div class="border border-solid border-2 border-black rounded p-2 w-25 d-grid gap-2 h-25 align-self-start text-center">
+                                    <div class="col-xl-3 col-md-3 col-sm-4 col-6 border border-solid border-2 border-black rounded p-2 d-grid gap-2 h-25 align-self-start text-center align-self-end align-self-md-start">
                                         <p class="mb-1 h3"><?= $moto[0]->prix_jour ?> €</p>
                                         <p class="small text-muted mb-0">/ par jour</p>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDates">
@@ -111,17 +111,16 @@
 
                                 <div class="card-body p-4 text-black ">
 
-                                    <div class="mb-5 w-75">
+                                    <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Adresse de départ et de retour</p>
-                                        <div class="p-4 border border-solid border-2 rounded d-flex flex-row justify-content-between">
+                                        <div class="p-4 border border-solid border-2 rounded d-flex flex-md-row flex-column justify-content-between">
                                             <div class="d-flex flex-row justify-content-between">
                                                 <i class="fa fa-map-marker fa-2x"></i>
                                                 <!--  <p class="font-italic mb-1 ms-3">{{ moto.proprietaire.user.adresse ~ " " ~ moto.proprietaire.user.codepostal ~ " " ~ moto.proprietaire.user.ville}}</p>  -->
-                                                <p class="font-italic mb-1 ms-3"><?= $moto[0]->ville_moto ?></p>
+                                                <p class="font-italic mb-1 ms-3"><?= (isset($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?></p>
                                             </div>
-                                            <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="270" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br><style>.mapouter{position:relative;text-align:right;height:200px;width:270px;}</style><a href="https://www.embedgooglemap.net"></a><style>.gmap_canvas {overflow:hidden;background:none!important;height:200px;width:270px;}</style></div></div> -->
-                                            <div class="mapouter">
-                                                <div class="gmap_canvas"><iframe width="270" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q={{ adresseMoto }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
+                                            <div class="mapouter col-4">
+                                                <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=<?= (isset($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
                                                     <style>
                                                         .mapouter {
                                                             position: relative;
@@ -144,7 +143,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-5 w-75">
+                                    <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Propriétaire</p>
                                         <div class="p-4 border border-solid border-2 rounded d-flex flex-row">
                                             <div>
@@ -160,14 +159,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-5 w-75">
+                                    <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Description du véhicule</p>
                                         <div class="p-4 border border-solid border-2 rounded">
                                             <p class="font-italic mb-1"><?= $moto[0]->description ?></p>
                                         </div>
                                     </div>
 
-                                    <div class="mb-5 w-75">
+                                    <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Caractéristiques techniques</p>
                                         <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between">
                                             <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Cylindrée : <?= $moto[0]->cylindree ?> cm3</strong></div>
@@ -185,7 +184,7 @@
                                     </div>
                                 </div> -->
 
-                                    <div class="mb-5 w-75 ">
+                                    <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Evaluations</p>
                                         <div class="p-4 border border-solid  border-2 rounded d-flex flex-column justify-content-between">
 
@@ -226,7 +225,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-5 w-75">
+                                    <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Disponibilités</p>
                                         <div class="p-4 border border-solid  border-2 rounded d-flex flex-md-row flex-column">
                                         <div class="calendrier1 mb-3 me-3">

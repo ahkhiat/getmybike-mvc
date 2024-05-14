@@ -55,6 +55,11 @@ left: 60vw;
   object-fit: cover;
 }
 
+/* ------------------------------- map Google ------------------------------- */
+#gmap_canvas{
+  width: 200px;
+  height: 160px;
+}
 
 }
 
@@ -75,6 +80,11 @@ left: 60vw;
   object-fit: cover;
 }
 
+/* ------------------------------- map Google ------------------------------- */
+#gmap_canvas{
+  width: 270px;
+  height: 200px;
+}
 
 }
 
