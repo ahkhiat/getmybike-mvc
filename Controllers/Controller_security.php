@@ -7,10 +7,10 @@ class Controller_security extends Controller
         $this->action_home();
     }
 
-    public function action_home()
-    {
-        $this->render('home');
-    }
+    // public function action_home()
+    // {
+    //     $this->render('home');
+    // }
 
 // ......................connection.......................
 

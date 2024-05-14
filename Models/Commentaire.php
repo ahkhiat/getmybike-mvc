@@ -205,6 +205,7 @@ class Commentaire extends Model
             $requete = $this->bd->prepare('SELECT COUNT(*) 
                                            FROM reservation r 
                                            WHERE r.user_id = :usid
+                                           AND r.date_fin < CURRENT_DATE
                                            AND NOT EXISTS (SELECT 1 
                                                            FROM commentaire c 
                                                            WHERE c.reservation_id = r.reservation_id 

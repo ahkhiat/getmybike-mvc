@@ -12,7 +12,7 @@
 
   
 
-  <?php // ---------------------Display dashboard if user is ADMIN --------------------
+  <!-- <?php // ---------------------Display dashboard if user is ADMIN --------------------
     if (isset($_SESSION['email']) && $_SESSION['roles'] == 'admin') 
       {
         echo
@@ -22,7 +22,7 @@
                 </li>
                     ';
       }
-  ?>
+  ?> -->
 </ul>
 
 
@@ -66,7 +66,7 @@
         <hr class="dropdown-divider">
       </li>
       <li><a class="dropdown-item" href="?controller=reservation&action=mes_reservations" >Mes réservation 
-        <?php if(isset($_SESSION['notifications'])): ?>
+        <?php if(isset($_SESSION['notifications']) && $_SESSION['notifications'] > 0 ): ?>
           <span class="badge text-bg-danger">  
             <?= $_SESSION['notifications']?>
           </span>

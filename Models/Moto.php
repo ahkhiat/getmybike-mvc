@@ -295,6 +295,7 @@ class Moto extends Model
                                            JOIN moto m ON f.moto_id = m.moto_id
                                            JOIN modele md ON m.modele_id = md.modele_id
                                            JOIN marque mar ON md.marque_id = mar.marque_id
+                                           JOIN user u ON f.user_id = u.user_id
                                            WHERE f.user_id = :usid
                                            ');
             $requete->execute(array(':usid' => $_SESSION['id']));

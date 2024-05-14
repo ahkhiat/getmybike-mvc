@@ -6,10 +6,11 @@ class Controller_user extends Controller
     {
         $this->action_home();
     }
-    public function action_home()
-    {
-        $this->render('home');
-    }
+    
+    // public function action_home()
+    // {
+    //     $this->render('home');
+    // }
 
 
     public function action_all_users()
@@ -94,6 +95,7 @@ class Controller_user extends Controller
     {
         $this->render("set_proprietaire");
     }
+
     public function action_set_proprietaire_request()
     {
         $m=User::get_model();

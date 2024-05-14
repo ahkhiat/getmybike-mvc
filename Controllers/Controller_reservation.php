@@ -7,10 +7,10 @@ class Controller_reservation extends Controller
         $this->action_home();
     }
 
-    public function action_home()
-    {
-        $this->render('home');
-    }
+    // public function action_home()
+    // {
+    //     $this->render('home');
+    // }
 
     public function action_prereserver()
     {
@@ -48,6 +48,7 @@ class Controller_reservation extends Controller
                'date_now'=>$date_now];
         $this->render("mes_reservations", $data);
     }
+
     public function action_reservations_mes_motos()
     {
         $user_id = $_SESSION['id'];

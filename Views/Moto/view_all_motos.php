@@ -10,7 +10,7 @@
 <?php foreach($motos as $moto): ?>
 	<!-- <?php var_dump($moto); ?> -->
 
-		<div class="col-lg-3 col-md-3 col-sm-5 mb-4">
+		<div class="col-lg-3 col-md-3 col-sm-5 col-11 mb-4">
 			<div class="card">
 				<a href="?controller=moto&action=moto_show&moto_id=<?= $moto->moto_id ?>">
 					<img src="./Public/img/moto/<?= $moto->moto_image_name ?>" alt="" class="card-img-top">

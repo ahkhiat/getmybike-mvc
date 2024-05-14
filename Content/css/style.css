@@ -21,10 +21,62 @@ a {
 /*                                  home page                                 */
 /* -------------------------------------------------------------------------- */
 
-#home_page_section {
+/* #home_page_section {
   margin-top: 25vh;
+} */
+
+
+
+#home-image {
+width: 100%;
 }
 
+#conteneur_slider{
+
+position:absolute;
+top: 60vh;
+left: 60vw;
+
+}
+
+@media screen and (max-width: 575px) {
+
+#home_container{
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 100vh;
+  background-image: url('/getmybike-mvc/Content/img/site/home/home_mobile.jpg') !important;
+  /* background-repeat: no-repeat; */
+}
+
+.card-img-top {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+
+
+}
+
+@media screen and (min-width: 576px) {
+
+#home_container{
+  /* border: 5px solid green; */
+  width: 100%;
+  height: 100vh;
+  background-image: url('/getmybike-mvc/Content/img/site/home/moto_home.png') !important;
+  background-repeat: no-repeat;
+
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                   navbar                                   */
@@ -193,21 +245,13 @@ footer {
 }
 
 
-.card-img-top {
-  width: 100%;
-  height: 15vw;
-  object-fit: cover;
-}
+
 
 #container-image {
   width: 100vw;
 }
 
-#home-image {
-  display: block;
-  height: 100vh;
-  margin: auto;
-}
+
 
 #login-image {
   display: block;
@@ -215,13 +259,7 @@ footer {
   margin-left: auto;
 }
 
-#conteneur_slider{
 
-  position:absolute;
-  top: 60vh;
-  left: 60vw;
-
-  }
 
 /* -------------------------------- car cards ------------------------------- */
    

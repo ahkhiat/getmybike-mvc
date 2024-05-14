@@ -2,6 +2,7 @@
 
 // var_dump($reservations);
 // var_dump($date_now);
+// var_dump($_SESSION);
 
 ?>
 

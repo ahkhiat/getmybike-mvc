@@ -50,4 +50,18 @@ abstract class Controller		//Ceci est le controleur par defaut
 			$this->render('error',$data);
 			die();										//Pour faire terminer le script vu qu'il y a une erreur
 		}
+
+		public function action_home()
+    {
+        $mc=Commentaire::get_model();
+
+        if(isset($_SESSION['nom']))
+        {
+            $user_id = $_SESSION['id'];
+            $nb_comments = $mc->is_reservation_sans_commentaire($user_id);
+            $_SESSION['notifications'] = $nb_comments;
+        }
+        $this->render('home');
+    }
+	
 }
