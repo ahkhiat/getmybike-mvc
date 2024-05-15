@@ -125,6 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
             chiffre.classList.remove("error");
 
         } 
+
+    
+
+
+
         
         // .......Hide and show password.................
         const passwordInput = document.getElementById('current-password');

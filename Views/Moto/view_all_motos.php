@@ -38,9 +38,14 @@
                            <?= $moto->moyenne_notes[0]->moyenne ?> /5 ( <?= $moto->nbr_notes[0]->nbr_notes ?>)</p>
 						<p class="card-text">
 							<i class="fa-solid fa-location-dot"></i>
-							<?php echo isset($moto->ville_moto) ? $moto->ville_moto : $moto->ville; ?>
+							<?php echo !empty($moto->ville_moto) ? $moto->ville_moto : $moto->ville; ?>
 						</p>
-						
+						<?php if (isset($_SESSION['email']) && $_SESSION['roles'] == 'admin') : ?>
+						<form action="?controller=moto&action=moto_update" method="POST">
+                              <input type="hidden" name="moto_id" id="moto_id" value="<?= $moto->moto_id ?>">
+                              <button type="submit" class="btn btn-outline-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i></button>
+                        </form>
+						<?php endif; ?>
 					</div>
 					</a>
 				</div>

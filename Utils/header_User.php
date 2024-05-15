@@ -6,7 +6,6 @@
     </a>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="?controller=moto&action=all_motos">Toutes les motos</a></li>
-      <li><hr class="dropdown-divider"></li>
     </ul>
   </li>
 
