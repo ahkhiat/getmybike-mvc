@@ -50,7 +50,19 @@ session_start();
       <div class="container-fluid">
 
         <div>
-          <a href="?controller=moto&action=all_motos" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
+          <?php
+              if (isset($_SESSION["email"])) 
+              { echo 
+                '
+                <a href="?controller=moto&action=all_motos" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
+              ';
+              } else  {
+                echo 
+                '
+                <a href="?controller=home&action=home" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
+                ';
+              }
+              ?>
         </div>
 
         <?php
