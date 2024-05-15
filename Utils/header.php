@@ -50,7 +50,7 @@ session_start();
       <div class="container-fluid">
 
         <div>
-          <a href="?controller=home&action=home" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
+          <a href="?controller=moto&action=all_motos" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
         </div>
 
         <?php

@@ -31,20 +31,15 @@ a {
 width: 100%;
 }
 
-#conteneur_slider{
 
-position:absolute;
-top: 60vh;
-left: 60vw;
-
-}
 
 @media screen and (max-width: 575px) {
 
 #home_container{
+  display: flex;
   /* border: 1px solid red; */
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   background-image: url('/getmybike-mvc/Content/img/site/home/home_mobile.jpg') !important;
   /* background-repeat: no-repeat; */
 }
@@ -53,6 +48,20 @@ left: 60vw;
   width: 100%;
   height: 40vh;
   object-fit: cover;
+}
+
+#conteneur_slider{
+  align-self: end;  
+  border: 1px solid green;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+}
+
+#bouton_acceuil{
+  width: 100vw !important;
+  height: 100%;
 }
 
 /* ------------------------------- map Google ------------------------------- */
@@ -79,6 +88,14 @@ left: 60vw;
   height: 15vw;
   object-fit: cover;
 }
+
+#conteneur_slider{
+
+  position:absolute;
+  top: 60vh;
+  left: 60vw;
+  
+  }
 
 /* ------------------------------- map Google ------------------------------- */
 #gmap_canvas{

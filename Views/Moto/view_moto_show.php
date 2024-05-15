@@ -10,30 +10,30 @@
 
 ?>
 <div id="moto_show_container">
-<div class="modal-dialog modal-xl">
+<!-- <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
-        <div class="modal-body">
+        <div class="modal-body"> -->
 
-            <div class="container  h-100 ">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col col-lg-9 col-xl-7 w-100">
-                        <div class="card">
+            <div class="container">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col col-md-12 col-lg-11 col-xl-9 ">
+                        <div class="card border-0">
 
-                            <div class="card-body p-4">
+                            <div class="card-body p-md-4 ">
 
-                                <div class="rounded-top d-flex flex-md-row flex-column justify-content-between border border-solid border-2 rounded border-0">
+                                <div class="p-md-3 d-flex flex-xl-row flex-column justify-content-between">
 
                                     <!-- ----------------------------- image et titre ----------------------------- -->
-                                    <div class="card-body p-1 border border-solid border-2 border-warning rounded d-flex flex-column">
-                                        <div class="card w-75 border-0">
+                                    <div class="col-xl-9 col-12 rounded d-flex flex-column">
+                                        <div class="">
                                             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                                <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 400px; z-index: 1">
+                                                <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid  mt-4 mb-2" style="width: 400px; z-index: 1">
                                             </div>
 
                                             <div class="card-body">
                                                 <h2><?= $moto[0]->modele_libelle ?> </h2>
-                                                <p class="card-text small text-muted mb-0 ps-3"><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes[0]->moyenne ?> /5 (<?= $nbr_notes[0]->nbr_notes ?>)</p>
+                                                <p class="card-text small text-muted mb-0 "><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes[0]->moyenne ?> /5 (<?= $nbr_notes[0]->nbr_notes ?>)</p>
 
                                                 <?php
                                                     if($is_favori == 0) {
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <!-- ------------------------- prix et bouton reserver ------------------------ -->
-                                    <div class="col-xl-3 col-md-3 col-sm-4 col-6 border border-solid border-2 border-black rounded p-2 d-grid gap-2 h-25 align-self-start text-center align-self-end align-self-md-start">
+                                    <div class="col-xl-3 col-md-4 col-sm-5 col-6 border border-solid border-2 border-black rounded p-2 d-grid gap-2 h-25  text-center align-self-end align-self-xl-start ms-xl-3">
                                         <p class="mb-1 h3"><?= $moto[0]->prix_jour ?> €</p>
                                         <p class="small text-muted mb-0">/ par jour</p>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalDates">
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-body p-4 text-black ">
+                                <div class="text-black">
 
                                     <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Adresse de départ et de retour</p>
@@ -166,12 +166,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-5 col-xl-9">
+                                    <div class="mb-5 col-xl-9 ">
                                         <p class="lead fw-normal mb-1">Caractéristiques techniques</p>
-                                        <div class="p-4 border border-solid  border-2 rounded d-flex justify-content-between">
+                                        <div class="p-4 border border-solid  border-2 rounded d-flex flex-column flex-md-row  justify-content-between">
                                             <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Cylindrée : <?= $moto[0]->cylindree ?> cm3</strong></div>
-                                            <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Poids : <?= $moto[0]->poids ?> kg</strong></div>
-                                            <div class="p-3 border border-solid border-1 rounded border-dark"><strong>Puissance : <?= $moto[0]->puissance ?> ch</strong></div>
+                                            <div class="p-3 border border-solid border-1 rounded border-dark mt-3 mt-md-0"><strong>Poids : <?= $moto[0]->poids ?> kg</strong></div>
+                                            <div class="p-3 border border-solid border-1 rounded border-dark mt-3 mt-md-0"><strong>Puissance : <?= $moto[0]->puissance ?> ch</strong></div>
                                         </div>
                                     </div>
 
@@ -320,9 +320,9 @@
 
             </div>
 
-        </div>
+        <!-- </div>
     </div>
-</div>
+</div> -->
 
 </div>
 
