@@ -30,20 +30,14 @@
                             // var_dump(date('d m Y', strtotime($reservation->date_debut)));
                             // var_dump($reservation->date_fin);
                                 if($date_now < new DateTime($reservation->date_debut)) {
-                                echo '
-                                <span class="badge text-bg-primary">A venir</span>							
-                                ';
+                                echo '<span class="badge text-bg-primary">A venir</span>';
                                 } 
-                                elseif(($date_now > new DateTime($reservation->date_debut)) && ($date_now < new DateTime($reservation->date_fin))) {
-                                echo '
-                                <span class="badge text-bg-success">En cours</span>
-                                ';
+                                elseif(($date_now > new DateTime($reservation->date_debut)) 
+                                   && ($date_now < new DateTime($reservation->date_fin))) {
+                                echo '<span class="badge text-bg-success">En cours</span>';
                                 } else {
-                                echo '
-                                <span class="badge text-bg-secondary">Passé</span>
-                                ';
+                                echo '<span class="badge text-bg-secondary">Passée</span>';
                                 }
-                            
                             ?>
 
                             </div>

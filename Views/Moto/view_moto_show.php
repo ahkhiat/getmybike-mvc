@@ -32,7 +32,7 @@
                                             </div>
 
                                             <div class="card-body">
-                                                <h2><?= $moto[0]->modele_libelle ?> </h2>
+                                                <h2><?= $moto[0]->marque_libelle ?> <?= $moto[0]->modele_libelle ?> </h2>
                                                 <p class="card-text small text-muted mb-0 "><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes[0]->moyenne ?> /5 (<?= $nbr_notes[0]->nbr_notes ?>)</p>
 
                                                 <?php
@@ -111,10 +111,25 @@
 
                                 <div class="text-black">
 
+                                    <div class="mb-5 col-xl-9 mt-5">
+                                        <p class="lead fw-normal mb-1"></p>
+                                        <div class="p-3 border border-solid border-2 rounded d-flex flex-row  justify-content-between">
+                                            <div class="d-flex flex-row  p-3">
+                                                <i class="fa-regular fa-handshake fa-2x"></i>
+                                            </div>
+                                            <div>
+                                                <p class="font-italic mb-1 ms-3 fw-bold">Sur rendez-vous</p>
+                                                <p class="font-italic mb-1 ms-3">Après avoir accepté votre demande de réservation, le propriétaire vous remettra les clés en main propre au début de la location.</p>
+                                            </div>
+                                            <p></p>
+
+                                        </div>
+                                    </div>
+
                                     <div class="mb-5 col-xl-9">
                                         <p class="lead fw-normal mb-1">Adresse de départ et de retour</p>
                                         <div class="p-4 border border-solid border-2 rounded d-flex flex-md-row flex-column justify-content-between">
-                                            <div class="d-flex flex-row justify-content-between">
+                                            <div class="d-flex flex-row ">
                                                 <i class="fa fa-map-marker fa-2x"></i>
                                                 <!--  <p class="font-italic mb-1 ms-3">{{ moto.proprietaire.user.adresse ~ " " ~ moto.proprietaire.user.codepostal ~ " " ~ moto.proprietaire.user.ville}}</p>  -->
                                                 <p class="font-italic mb-1 ms-3"><?= (isset($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?></p>
