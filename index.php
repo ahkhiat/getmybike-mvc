@@ -14,13 +14,7 @@ require_once('Models/Commentaire.php');
 require_once('App/Controller.php');
 
 /* ---------------------------------- Utils --------------------------------- */
-
 require_once('Utils/header.php');
-
-
-
-
-
 
 $controllers=['home','config', 'security', 'user', 'admin', 'moto', 'reservation', 'commentaire'];
 $controller_default='home';
