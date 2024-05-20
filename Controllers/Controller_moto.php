@@ -37,6 +37,7 @@ class Controller_moto extends Controller
         $mc=Commentaire::get_model();
         $mr=Reservation::get_model();
 
+        // Trouver le proprietaire de la moto
         $user_id = $m->get_user_id();
         $moto_id = $_GET['moto_id'];
 

@@ -50,6 +50,12 @@ width: 100%;
   object-fit: cover;
 }
 
+.card-img-show {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+
 #conteneur_slider{
   align-self: end;  
   border: 1px solid green;
@@ -86,6 +92,12 @@ width: 100%;
 .card-img-top {
   width: 100%;
   height: 15vw;
+  object-fit: cover;
+}
+
+.card-img-show {
+  width: 100%;
+  height: 50vh;
   object-fit: cover;
 }
 
@@ -371,4 +383,7 @@ footer {
 /* -------------------------------------------------------------------------- */
 .vignette-resa {
   width: 100px;
+  height: 15vh;
+  object-fit: cover;
+
 }

@@ -212,10 +212,20 @@
                         
                         <div class="card-body">
                           <h5 class="card-title"><?= $moto->marque_libelle ?>   <?= $moto->modele_libelle ?></h5>
+                          
                           <img src="./Public/img/moto/<?= $moto->moto_image_name ?>" alt="" width="150px" class="rounded">
                           <p class="card-text"><i class="fa-solid fa-star" style="color: orange;"></i> 
                            <?= $moto->moyenne_notes ?> /5 ( <?= $moto->nbr_notes ?>)</p>
+                           <div class="mb-2">
+                            <?php
+                              if ($moto->dispo == 1) {
+                                echo "<span class='badge text-bg-success'>active</span>";
+                              } else {
+                                echo "<span class='badge text-bg-secondary'>non active</span>";
 
+                              }
+                              ?>
+                          </div>
                           <div class="d-flex justify-content-between">
                             <a href="?controller=moto&action=moto_show&moto_id=<?= $moto->moto_id ?>"
                               class="btn btn-outline-warning btn-sm">Fiche moto</a>
@@ -281,7 +291,6 @@
                   <?php
                   // var_dump($commentaire); ?>
                   <div class="card-body">
-
                     <a href="?controller=user&action=public_profile&id=<?= $commentaire->user_id ?>"
                       class="text-decoration-none link-dark fw-bold position-relative">
                       <div class="d-flex align-items-center ">
@@ -290,8 +299,7 @@
                         <h5 class="ms-3"><?= $commentaire->prenom ?>   <?= $commentaire->nom ?></h5>
                       </div>
                     </a>
-
-                    <p class="card-text"><?= $commentaire->texte_moto ?></p>
+                    <p class="card-text"><?= $commentaire->texte_proprio ?></p>
                     <div class="d-flex justify-content-between">
                       <div>
                         <?php
@@ -302,11 +310,7 @@
                         ?>
                       </div>
                       <em><?= date('d m Y', strtotime($commentaire->created_at)) ?></em>
-
                     </div>
-
-                    <p>
-                    </p>
                     <hr>
                   </div>
                 </div>

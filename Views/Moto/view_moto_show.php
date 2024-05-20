@@ -28,7 +28,7 @@
                                     <div class="col-xl-9 col-12 rounded d-flex flex-column">
                                         <div class="">
                                             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                                <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="img-fluid  mt-4 mb-2" style="width: 400px; z-index: 1">
+                                                <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="card-img-show  mt-4 mb-2" style="width: 400px; z-index: 1">
                                             </div>
 
                                             <div class="card-body">
@@ -36,18 +36,8 @@
                                                 <p class="card-text small text-muted mb-0 "><i class="fa-solid fa-star" style="color: orange;"></i> <?= $moy_notes[0]->moyenne ?> /5 (<?= $nbr_notes[0]->nbr_notes ?>)</p>
 
                                                 <?php
-                                                    if($is_favori == 0) {
-                                                    echo '
-                                                    <a href="?controller=moto&action=favori&moto_id='. $moto[0]->moto_id .'" class="btn btn-danger btn-sm mt-3"><i class="fa-regular fa-heart"> Ajouter aux favoris</i></a>
-                                                    ';
-                                                    } 
-                                                
-                                                    elseif($is_favori == 1) {
-                                                    echo '
-                                                    <a href="?controller=moto&action=unfavori&moto_id='. $moto[0]->moto_id .'" class="btn btn-outline-danger btn-sm mt-3"><i class="fa-solid fa-check"></i></a>
-
-                                                        ';
-                                                    }
+                                                    if($is_favori == 0) {echo '<a href="?controller=moto&action=favori&moto_id='. $moto[0]->moto_id .'" class="btn btn-danger btn-sm mt-3"><i class="fa-regular fa-heart"> Ajouter aux favoris</i></a>';} 
+                                                    elseif($is_favori == 1) {echo '<a href="?controller=moto&action=unfavori&moto_id='. $moto[0]->moto_id .'" class="btn btn-outline-danger btn-sm mt-3"><i class="fa-solid fa-check"></i></a>';}
                                                 
                                                 ?>
 

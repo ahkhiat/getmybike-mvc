@@ -1,5 +1,5 @@
 <?php
-// var_dump($moto);
+var_dump($moto);
 ?>
 <div id="moto_update_container">
 
@@ -18,17 +18,23 @@
                 <i class="fa fa-camera" style="color: #fff"></i>
                 </div>
                 </div>
-                <button type="submit" class="btn">Mettre à jour</button>
+                <!-- <button type="submit" class="btn">Mettre à jour</button> -->
         </form>
 
         <form action="?controller=moto&action=moto_update_request" method="POST">
+            <div class="row mt-5">
+                <div class="mb-3 col-xl-6">
+                    <label for="dispo">Disponibilité</label>
+                    <input type="checkbox" id="dispo" name="dispo" <?php echo ($moto[0]->dispo == 1) ? 'checked' : ''; ?>>
+                </div>
+            </div>
             <div class="row">
                 <div class="mb-3 col-xl-6">
                     <label for="modele" class="form-label">Modèle</label>
                     <select class="form-select" name="modele_id" id="modele">
                         <option selected>Choix du modèle</option>
                         <?php  foreach($modeles as $p ): ?>
-                        <option value="<?=$p->modele_id?>"> <?= $p->marque_libelle?> <?php str_repeat('&nbsp;', 1) ?><?=$p->modele_libelle?></option>
+                        <option value="<?=$p->modele_id?>" <?php if($moto[0]->modele_id==$p->modele_id) echo 'selected'; ?>> <?= $p->marque_libelle?> <?php str_repeat('&nbsp;', 1) ?><?=$p->modele_libelle?></option>
                         <?php endforeach; ?>
                     </select>  
                 </div>
@@ -62,6 +68,7 @@
                     <label for="prix_jour" class="form-label">Prix par jour</label>
                     <input type="text" class="form-control" id="prix_jour" name="prix_jour" placeholder="€ / jour" value="<?= $moto[0]->prix_jour ?>">
                 </div>
+            
             </div>
 
             <div id="adresse_moto_container">
@@ -84,8 +91,7 @@
 
             <div class="form-check form-switch  mt-3 mb-3">
                     <!-- <input class="form-check-input" type="checkbox" id="bagagerie" name="bagagerie" checked> -->
-                <input type="hidden" name="bagagerie" value="false" />
-                <input type="checkbox" name="bagagerie" id="bagagerie" value="true" />
+                <input type="checkbox" id="bagagerie" name="bagagerie" <?php echo ($moto[0]->bagagerie == 1) ? 'checked' : ''; ?>>
                 <label class="form-check-label" for="bagagerie">Bagagerie (Avez-vous un topcase / des valises latérales)</label>
 
             </div>

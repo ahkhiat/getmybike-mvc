@@ -22,8 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#img_input").onchange = function() {
     document.querySelector("#img_form").submit();
     }
+
+    /* --------------------------- Alert before delete -------------------------- */
+    let deleteButton = document.querySelector(".delete-button");
+        deleteButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (confirm("Êtes-vous sûr de vouloir supprimer la moto ? Cette action est irréversible")) {
+          deleteButton.closest('form').submit();
+        } 
+    })
+
   }
  
 });
+
+
 
 

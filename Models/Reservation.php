@@ -42,12 +42,13 @@ class Reservation extends Model
     {
 
         try {
-            $requete = $this->bd->prepare('SELECT * 
+            $requete = $this->bd->prepare('SELECT r.reservation_id, r.user_id, md.modele_libelle, mq.marque_libelle, r.date_debut, r.date_fin, u.nom, u.prenom, m.moto_image_name, u.user_id
                                            FROM reservation r
                                            JOIN moto m ON r.moto_id = m.moto_id
                                            JOIN proprietaire p ON m.proprietaire_id = p.proprietaire_id
                                            JOIN modele md ON m.modele_id = md.modele_id
                                            JOIN marque mq ON md.marque_id = mq.marque_id 
+                                           JOIN user u ON r.user_id = u.user_id
                                            WHERE p.user_id = :id
                                            ');
             $requete->execute(array(

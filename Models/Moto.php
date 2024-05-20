@@ -28,7 +28,8 @@ class Moto extends Model
                                            JOIN modele md ON mt.modele_id = md.modele_id
                                            JOIN marque mq ON md.marque_id = mq.marque_id
                                            JOIN proprietaire p ON mt.proprietaire_id = p.proprietaire_id
-                                           JOIN user u ON u.user_id = p.user_id ');
+                                           JOIN user u ON u.user_id = p.user_id 
+                                           WHERE dispo = 1');
             $requete->execute();
             
         } catch (PDOException $e) {
@@ -131,27 +132,27 @@ class Moto extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
-    public function set_model_add()
-    {
-        try { // a faire
-            $requete = $this->bd->prepare('INSERT INTO clients (id, nom, prenom, adresse1, adresse2, code_postal, ville, email, telephone) 
-            VALUES(NULL, :nom, :prenom, :ad1, :ad2, :cp, :ville, :email, :tel)');
-            $requete->execute(array(
-                ':nom' => $_POST['nom'],
-                ':prenom' => $_POST['prenom'],
-                ':ad1' => $_POST['adresse1'],
-                ':ad2' => $_POST['adresse2'],
-                ':cp' => $_POST['code_postal'],
-                ':ville' => $_POST['ville'],
-                ':email' => $_POST['email'],
-                ':tel' => $_POST['telephone']
-            ));
+    // public function set_model_add()
+    // {
+    //     try { // a faire
+    //         $requete = $this->bd->prepare('INSERT INTO clients (id, nom, prenom, adresse1, adresse2, code_postal, ville, email, telephone) 
+    //         VALUES(NULL, :nom, :prenom, :ad1, :ad2, :cp, :ville, :email, :tel)');
+    //         $requete->execute(array(
+    //             ':nom' => $_POST['nom'],
+    //             ':prenom' => $_POST['prenom'],
+    //             ':ad1' => $_POST['adresse1'],
+    //             ':ad2' => $_POST['adresse2'],
+    //             ':cp' => $_POST['code_postal'],
+    //             ':ville' => $_POST['ville'],
+    //             ':email' => $_POST['email'],
+    //             ':tel' => $_POST['telephone']
+    //         ));
             
-        } catch (PDOException $e) {
-            die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
-        }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
-    }
+    //     } catch (PDOException $e) {
+    //         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+    //     }
+    //     return $requete->fetchAll(PDO::FETCH_OBJ);
+    // }
     public function set_moto_add_request()
     {
         $bagagerie = isset($_POST['bagagerie']) && $_POST['bagagerie'] === 'on';
@@ -189,12 +190,14 @@ class Moto extends Model
     {
 
         try {
-            // $bagagerie = isset($_POST['bagagerie']) && $_POST['bagagerie'] === 'on';
+            $bagagerie = isset($_POST['bagagerie']) ? 1 : 0;
+            $dispo = isset($_POST['dispo']) ? 1 : 0;
+
 
             $requete = $this->bd->prepare('UPDATE moto SET modele_id = :mod, annee = :annee, 
                                            couleur = :coul, prix_jour = :pj, description = :des, bagagerie = :bag, adresse_moto = :adr, 
                                            code_postal_moto = :cp, ville_moto = :vil, cylindree = :cyl, poids = :poi, 
-                                           puissance = :pui
+                                           puissance = :pui, dispo = :dispo
                                            WHERE moto_id = :mid
                                            ');
             $requete->execute(array(':mid' => $_POST['moto_id'],
@@ -203,13 +206,14 @@ class Moto extends Model
                                     ':coul' => $_POST['couleur'],
                                     ':pj' => $_POST['prix_jour'],
                                     ':des' => $_POST['description'],
-                                    ':bag' => $_POST['bagagerie'],
+                                    ':bag' => $bagagerie,
                                     ':adr' => $_POST['adresse_moto'],
                                     ':cp' => $_POST['code_postal_moto'],
                                     ':vil' => $_POST['ville_moto'],
                                     ':cyl' => $_POST['cylindree'],
                                     ':poi' => $_POST['poids'],
-                                    ':pui' => $_POST['puissance']
+                                    ':pui' => $_POST['puissance'],
+                                    ':dispo' => $dispo
                                     ));
             
         } catch (PDOException $e) {
@@ -275,13 +279,11 @@ class Moto extends Model
             $requete = $this->bd->prepare('SELECT COUNT(*) FROM favori WHERE user_id = :usid AND moto_id = :mid');
             $requete->execute(array(':usid' => $_SESSION['id'], ':mid' => $moto_id));
             $count = $requete->fetchColumn();
-            // return $count > 0;
             if ($count > 0) {
-                return 1; // when followed_id is followed by follower_id
+                return 1; // quand la moto est likée
             } else {
-                return 0; // when followed_id is NOT followed by follower_id
+                return 0; // quand la moto n'est pas likée
             }
-            
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
