@@ -86,14 +86,16 @@ session_start();
         
         </div>
         
-        <ul class="navbar-nav ms-5 me-auto mb-lg-0">
-            <a href="?controller=home&action=faq"><li class="nav-item">Des questions ?</li></a>
-        </ul>
+        
+
           <!-- this button is here to respect the automatic justify between of the bootstrap navbar  -->
           <?php
           if (!isset($_SESSION["email"])) {
             echo 
                       '
+                      <ul class="navbar-nav ms-5 me-auto mb-lg-0">
+                        <a href="?controller=home&action=faq"><li class="nav-item">Des questions ?</li></a>
+                      </ul>
                       <ul class="nav-item me-3 mb-2 mb-lg-0">
                         <a href="?controller=security&action=user_connection" ><button type="button" class="btn btn-louer">Louer ma moto</button></a>
                       </ul>
