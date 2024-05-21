@@ -7,6 +7,9 @@ class Controller_home extends Controller
         $this->action_home();
     }
 
-    
+    public function action_faq()
+    {
+        $this->render("faq");
+    }
 
 }

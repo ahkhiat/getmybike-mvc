@@ -121,11 +121,12 @@
                                         <div class="p-4 border border-solid border-2 rounded d-flex flex-md-row flex-column justify-content-between">
                                             <div class="d-flex flex-row ">
                                                 <i class="fa fa-map-marker fa-2x"></i>
-                                                <!--  <p class="font-italic mb-1 ms-3">{{ moto.proprietaire.user.adresse ~ " " ~ moto.proprietaire.user.codepostal ~ " " ~ moto.proprietaire.user.ville}}</p>  -->
-                                                <p class="font-italic mb-1 ms-3"><?= (isset($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?></p>
+                                                <!-- <p class="font-italic mb-1 ms-3"><?= (isset($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?></p> -->
+                                                <?php echo !empty($moto[0]->ville_moto) ? $moto[0]->ville_moto : $moto[0]->ville; ?>
+
                                             </div>
                                             <div class="mapouter col-4">
-                                                <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=<?= (isset($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
+                                                <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=<?= (!empty($moto[0]->ville_moto)) ? $moto[0]->ville_moto : $moto[0]->ville ?>&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a><br>
                                                     <style>
                                                         .mapouter {
                                                             position: relative;

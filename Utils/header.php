@@ -83,15 +83,19 @@ session_start();
               include('Utils/header_User.php') ;
               };
           ?> 
-
+        
         </div>
-
+        
+        <ul class="navbar-nav ms-5 me-auto mb-lg-0">
+            <a href="?controller=home&action=faq"><li class="nav-item">Des questions ?</li></a>
+        </ul>
           <!-- this button is here to respect the automatic justify between of the bootstrap navbar  -->
           <?php
           if (!isset($_SESSION["email"])) {
-            echo '
+            echo 
+                      '
                       <ul class="nav-item me-3 mb-2 mb-lg-0">
-                        <a href="?controller=security&action=user_connection" ><i class="home-user fa-solid fa-user fa-xl"></i></a>
+                        <a href="?controller=security&action=user_connection" ><button type="button" class="btn btn-louer">Louer ma moto</button></a>
                       </ul>
                       ';
           }

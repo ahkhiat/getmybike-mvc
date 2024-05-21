@@ -10,7 +10,7 @@
 <?php if(isset($_SESSION['nom'])) :?>
     <a href="?controller=moto&action=all_motos"><button type= "button" class="btn btn-warning" id="bouton_acceuil">Prenez la route</button></a>
 <?php else : ?>
-    <a href="?controller=security&action=user_connection"><button type= "button" class="btn btn-light" id="bouton_acceuil">Inscrivez-vous</button></a>
+    <a href="?controller=security&action=user_connection"><button type= "button" class="btn btn-louer-mobile" id="bouton_acceuil">Louer ma moto</button></a>
 <?php endif ?>
 </div>
 
