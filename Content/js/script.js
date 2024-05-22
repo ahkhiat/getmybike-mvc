@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const motoContainer = document.querySelector("#moto_update_container");
 
+  const allMotosContainer = document.querySelector('#container_all_motos');
+
 
   /* ------------------------- upload profile picture ------------------------- */
 
@@ -33,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
   }
+
+ 
  
 });
 

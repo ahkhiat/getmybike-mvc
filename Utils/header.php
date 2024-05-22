@@ -28,7 +28,6 @@ session_start();
   <!-- --------------------------------fonts-------------------------------------------- -->
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 
-
   <!-- ------------------------------- scripts ------------------------------ -->
   <script type="module" src="./Content/js/script.js" defer></script>
   <script src="./Content/js/login_form_verify.js" defer></script>
