@@ -1,6 +1,6 @@
 
 <div class="commentaire_add_container">
-    <div class="mx-auto col-xl-6 col-md-8 col-sm-10 col-11">
+    <div class="mx-auto col-11 col-sm-10 col-md-8 col-xl-6">
 
     <form action="?controller=commentaire&action=commentaire_add_request" method="POST">
         <div class="card-header">

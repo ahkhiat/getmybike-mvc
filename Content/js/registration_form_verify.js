@@ -4,9 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(registrationContainer)
     {
-        // console.log('registration_form_verify loaded');
-     
-
         /* ---------------------------- Targeting messages containers ---------------------------- */
         let groupForm = document.getElementById("registration-form");
 
@@ -17,11 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let generique = document.querySelector(".generique");
         let chiffre = document.querySelector(".chiffre");
 
-
         const uppercaseRegex = /[A-Z]{1}/;
         const lowercaseRegex = /[a-z]{1}/;
         const specialCharRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{1}/;
-        const numbers = /[0-9]{1}/g;
+        const numbers = /[0-9]{1}/;
         
         /* ---------------------- Listening the password input ---------------------- */
         input.addEventListener("input", function(){

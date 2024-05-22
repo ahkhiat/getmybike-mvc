@@ -8,7 +8,7 @@
             <h1 class="text-center">Confirmez vos dates !</h1>
         </div>
         <div class=" ">
-            <div class="col-xl-6 col-md-6 d-flex flex-column mx-auto">
+            <div class="col-md-6 col-xl-6 d-flex flex-column mx-auto">
                 <div>
                     <label for="date-debut" class="form-label">Date début</label>
                     <input type="date" class="form-control" id="date_debut" name="date_debut" value="<?= $_POST['date_debut']?>">

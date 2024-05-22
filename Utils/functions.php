@@ -9,7 +9,3 @@ function validData($data)
     return $data;
 }
 
-// function validPassword($pswd)
-// {
-//     $toto = 
-// }

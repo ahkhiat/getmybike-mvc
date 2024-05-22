@@ -28,11 +28,6 @@ class Controller_security extends Controller
         $mu=User::get_model();
         $mc=Commentaire::get_model();
 
-        // $data = ['user'=>$ms->get_login(),
-        //          'proprietaire'=>$mu->get_proprietaire()];
-
-        // $this->render("login",$data);
-
         $user = $ms->get_login();
 
         if ($user) {

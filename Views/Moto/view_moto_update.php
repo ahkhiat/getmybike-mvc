@@ -3,7 +3,7 @@ var_dump($moto);
 ?>
 <div id="moto_update_container">
 
-    <div class="mx-auto col-xl-6 col-md-8 col-sm-10 col-11">
+    <div class="mx-auto col-11 col-sm-10 col-md-8 col-xl-6">
         <h1>Modifier une moto</h1>
         <form action="?controller=moto&action=moto_picture" class="img-form" id="img_form"
                 enctype="multipart/form-data" method="POST">

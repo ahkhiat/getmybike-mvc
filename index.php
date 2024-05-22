@@ -5,7 +5,6 @@ require_once('App/Model.php');
 require_once('Models/Config.php');
 require_once('Models/Security.php');
 require_once('Models/User.php');
-require_once('Models/Admin.php');
 require_once('Models/Moto.php');
 require_once('Models/Reservation.php');
 require_once('Models/Commentaire.php');
@@ -16,7 +15,7 @@ require_once('App/Controller.php');
 /* ---------------------------------- Utils --------------------------------- */
 require_once('Utils/header.php');
 
-$controllers=['home','config', 'security', 'user', 'admin', 'moto', 'reservation', 'commentaire'];
+$controllers=['home','config', 'security', 'user', 'moto', 'reservation', 'commentaire'];
 $controller_default='home';
 
 if(isset($_GET['controller']) and in_array($_GET['controller'],$controllers))

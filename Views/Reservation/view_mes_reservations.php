@@ -18,7 +18,7 @@
             // var_dump($reservation); 
             ?>  
 
-            <div class="col-lg-3 col-md-3 col-sm-5 mb-4">
+            <div class="col-sm-5 col-md-3 col-lg-3 mb-4">
                 <div class="card">
                     <!-- <a href="?controller=moto&action=moto_show&moto_id=<?= $reservation->reservation_id ?>"> --> 
                         <img src="./Public/img/moto/<?= $reservation->moto_image_name ?>" alt="" class="vignette-resa align-self-center">

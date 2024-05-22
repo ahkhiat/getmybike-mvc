@@ -3,7 +3,7 @@ var_dump($modeles);
 ?>
 <div id="moto_add_container">
 
-    <div class="mx-auto col-xl-6 col-md-8 col-sm-10 col-11">
+    <div class="mx-auto col-11 col-sm-10 col-md-8 col-xl-6">
         <h1>Ajouter une moto</h1>
 
         <form action="?controller=moto&action=moto_add_request" method="POST">

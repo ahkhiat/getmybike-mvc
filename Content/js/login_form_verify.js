@@ -4,24 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
   
     if(loginContainer)
     {
-  
-        // .......pouvoir voir ou cacher le mot de passe tapperdans le formulaire de connecxion.................
-        // console.log('login_form_verify loaded');
-  
-        const inputPassword = document.getElementById('pswd');
-        const toggleButton = document.getElementById('btn');
+        const inputPassword = document.querySelector('#pswd');
+        const toggleButton = document.querySelector('#btn');
         const iconEye = document.querySelector('#btn i');
   
         toggleButton.addEventListener('click',function(){
   
+              /* --------------- change the input type to show the password --------------- */
             inputPassword.type =  inputPassword.type === 'password' ? 'text' : 'password';
-  
-              //........................Changer l'icône de l'œil
-            const iconEye = document.querySelector('#btn i');
+
+              /* --------------------------- change the eye icon -------------------------- */
             iconEye.classList.toggle('fa-eye');
             iconEye.classList.toggle('fa-eye-slash');
-            
         });
     }
-  
   });
