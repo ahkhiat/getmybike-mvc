@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12 col-md-12 col-lg-11 col-xl-9">
-            <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Generic placeholder image" class="card-img-show mt-4 mb-2">
+            <img src="./Public/img/moto/<?= $moto[0]->moto_image_name ?>" alt="Moto à louer, postée par un utilisateur, de marque <?= $moto[0]->marque_libelle?> et de modèle <?= $moto[0]->modele_libelle?>, de <?= $moto[0]->annee?> " class="card-img-show mt-4 mb-2">
                 <div class="card border-0">
                     <div class="card-body p-md-4 ">
                         <div class="p-md-3 d-flex flex-xl-row flex-column justify-content-between">
