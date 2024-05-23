@@ -11,7 +11,7 @@
 	<div class="col-12 col-sm-5 col-md-6 col-lg-3 mb-4">
 		<div class="card">
 			<a href="?controller=moto&action=moto_show&moto_id=<?= $moto->moto_id ?>">
-				<img src="./Public/img/moto/<?= $moto->moto_image_name ?>" alt="" class="card-img-top">
+				<img src="./Public/img/moto/<?= $moto->moto_image_name ?>" alt="Moto à louer, postée par un utilisateur, de marque <?= $moto->marque_libelle?> et de modèle <?= $moto->modele_libelle?>, de <?= $moto->annee?> " class="card-img-top">
 				<div class="card-body">
 					<div class="d-flex justify-content-between align-items-center">
 					<h5 class="card-title"><?= $moto->marque_libelle?> <?= $moto->modele_libelle?></h5>

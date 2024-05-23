@@ -9,7 +9,9 @@ session_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Louez une moto entre particuliers en toute confiance. Découvrez une large sélection de motos disponibles près de chez vous, à des prix compétitifs. Réservez facilement en ligne et profitez de votre prochaine aventure à deux roues.">
+  
+  <!-- -------------------------------- favicon --------------------------------- -->
   <link rel="shortcut icon" href="./Content/img/site/fav.ico" type="image/x-icon">
 
   <!-- ------------------------------- stylesheets ------------------------------ -->
@@ -18,14 +20,14 @@ session_start();
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <!-- ------------------------------- libraries scripts  ------------------------------ -->
+  <!-- ------------------------------ libraries scripts  --------------------------- -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/29aef3fc25.js" crossorigin="anonymous"></script>
 
-  <!-- ---------------------------------icons---------------------------------------- -->
+  <!-- --------------------------------icons-------------------------------------- -->
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-  <!-- --------------------------------fonts-------------------------------------------- -->
+  <!-- --------------------------------fonts------------------------------------ -->
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 
   <!-- ------------------------------- scripts ------------------------------ -->
@@ -35,7 +37,7 @@ session_start();
   <script src="./Content/js/form-preresa.js" defer></script> 
 
 
-  <title>Get My Bike</title>
+  <title>Location de moto entre particuliers - Get My Bike</title>
 </head>
 
 <body>

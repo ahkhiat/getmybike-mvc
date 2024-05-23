@@ -15,9 +15,6 @@
   // var_dump($commentaires);
   ?>
 
-
-
-
   <section>
     <div class="container py-5">
 

@@ -1,6 +1,6 @@
 <div id="user_login_container">
   <div class="mx-auto mt-5 col-11 col-sm-8 col-md-6 col-xl-4">
-    <h2 class="text-center">Se connecter</h2>
+    <h1 class="text-center">Se connecter</h1>
     <form id="login-form" action="?controller=security&action=login" method="POST">
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
