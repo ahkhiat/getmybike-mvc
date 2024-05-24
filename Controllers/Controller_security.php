@@ -59,10 +59,6 @@ class Controller_security extends Controller
 
 //.........................registration valid.............................
 
-
-
-
-    // version Nadia 15 04 2024
     public function action_user_registration_valid()
     {   
         if(isset($_POST['submit_registration']))
@@ -85,14 +81,12 @@ class Controller_security extends Controller
                         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                             $message = 'L\'adresse e-mail n\'est pas valide.';
                             $this->action_error($message);
-                           
                         }
                         
                         // Validation du mot de passe
                         $password = $_POST['password'];
                         if (!preg_match('/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[a-zA-Z]).{11,}$/', $password)) {
                             $message = 'Votre mot de passe doit contenir au moins une lettre majuscule, un caractère spécial et avoir une longueur d\'au moins 11 caractères.';
-                            
                             $this->action_error($message);
                         }
                         
@@ -101,7 +95,6 @@ class Controller_security extends Controller
                         // if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $birthdate)) {
                         //     $message = 'La date de naissance n\'est pas au bon format. Utilisez YYYY-MM-DD.';
                         //     $this->action_error($message);
-
                         // }
 
                         $m = Security::get_model();
@@ -111,7 +104,6 @@ class Controller_security extends Controller
                                 $email = $_POST['email'];
                                 $data = ['user'=>$m->get_login()];
                             }
-                    
                     } else {
                     // Sinon, afficher le message d'erreur
                     echo $message;

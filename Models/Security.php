@@ -33,10 +33,6 @@ public function get_login()
             $email = validData($_POST['email']);
             $requete = $this->bd->prepare('SELECT * FROM user WHERE email = :email');
             $requete->execute(array(':email' => $email));
-
-            $updateQuery = $this->bd->prepare('UPDATE user SET lastActivityTime = CURRENT_TIMESTAMP WHERE email = :em');
-            $updateQuery->execute(array(':em' => $email));
-            
             if($requete->rowCount() > 0) {
                 $user = $requete->fetch(PDO::FETCH_OBJ);
                 $password_hash = $user->pswd; // Récupérer le hachage du mot de passe depuis la base de données
@@ -58,7 +54,6 @@ public function get_login()
             // Gestion des erreurs PDO
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
         } 
-        
     }
 
 
@@ -73,8 +68,6 @@ public function get_user_registration_valid()
     $password = validData(password_hash($_POST['password'], PASSWORD_DEFAULT));
     $nom = validData($_POST['nom']);
     $prenom = validData($_POST['prenom']);
-    
-     
     try {
         // Vérifier si l'email existe déjà dans la base de données
         $requete_verification = $this->bd->prepare('SELECT * FROM user WHERE email = :email');
@@ -85,28 +78,26 @@ public function get_user_registration_valid()
         echo "<script>alert('Cet email est déjà utilisé. Veuillez choisir un autre email.');</script>";
             return null; // Arrêter le processus d'inscription
         } else {
-            // L'email n'existe pas, il faut s'inscription
-            //'user' is the default role
+            // L'email n'existe pas, on procède à la création de l'utilisateur
+            //'user' est le role par défaut
             $role = "user";
             $requete_insertion = $this->bd->prepare('INSERT INTO user (user_id, email, roles, pswd, prenom, nom) 
-                VALUES(NULL, :e, :rl, :pswd, :prenom, :nom)');
-            
+                                                     VALUES(NULL, :e, :rl, :pswd, :prenom, :nom)');
             $requete_insertion->execute(array(
-                ':e' => $email,
-                ':rl' => $role,
-                ':pswd' => $password,
-                ':nom' => $nom,
-                ':prenom' => $prenom,
-                ));
+                                                ':e' => $email,
+                                                ':rl' => $role,
+                                                ':pswd' => $password,
+                                                ':nom' => $nom,
+                                                ':prenom' => $prenom,
+                                                ));
 
             return $requete_insertion->fetchAll(PDO::FETCH_OBJ);
-
 }
     } catch (PDOException $e) {
         // Gestion des erreurs PDO
         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage());
     }  
-
 }
+
 
 }
