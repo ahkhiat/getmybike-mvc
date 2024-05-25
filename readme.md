@@ -52,3 +52,5 @@ liste des devs:
 
 Le 12 mai, retour sur le continent.
 
+25 mai essais deploiement depuis Git
+
