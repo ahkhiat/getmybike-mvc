@@ -15,6 +15,13 @@ require_once('App/Controller.php');
 /* ---------------------------------- Utils --------------------------------- */
 require_once('Utils/header.php');
 
+/* ------------------------------- Dépendances ------------------------------ */
+require 'vendor/autoload.php'; // fichier .env = variables d'environnement
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+
 $controllers=['home','config', 'security', 'user', 'moto', 'reservation', 'commentaire'];
 $controller_default='home';
 

@@ -26,7 +26,7 @@ class Model
     protected function __construct()
     {
         try {
-            $this->bd = new PDO('mysql:host=localhost:3307;dbname=get-my-bike-mvc', 'root', '');
+            $this->bd = new PDO(getenv('DB_PATH'));
             $this->bd->query("SET NAMES 'utf8'");
             $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } 
