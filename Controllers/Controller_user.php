@@ -105,7 +105,6 @@ class Controller_user extends Controller
     
     public function action_profile_picture()
     {
-
         if(isset($_FILES["img_input"]["name"])){
             $user_id = $_POST["user_id"];
             $nom = $_POST["nom"];
@@ -117,12 +116,12 @@ class Controller_user extends Controller
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $tmpName);
 
-            //image validation by type & by MIME
+            //Validation par le type et par le type MIME
             $validImageExtension = ['jpg', 'jpeg', 'png', 'webp'];
             $validMimeType = ["image/jpeg", "image/jpg", "image/gif", "image/png", "image/svg+xml", 'image/webp'];
             
+            // Mettre tout en minuscule
             $imageExtension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
-
             if(
                 (
                 !in_array($imageExtension, $validImageExtension) &&
@@ -136,30 +135,14 @@ class Controller_user extends Controller
                     document.location.href = '?controller=user&action=user_profile'
                 </script>
                 ";
-
-                /* ------------------------------- ancien code ------------------------------ */
-            // } elseif ($imageSize > 1200000){
-            //     echo 
-            //     "
-            //     <script>
-            //         alert('Image trop lourde ! 1,2 Mo max !')
-            //         document.location.href = '?controller=user&action=user_profile'
-            //     </script>
-            //     ";
-            // } else {
-                /* ------------------------------- ancien code ------------------------------ */
-
             } else {
                 $maxFileSize = 1200000; // 1,2 Mo
     
                 if ($imageSize > $maxFileSize) {
                     $image = new Imagick($tmpName);
-                    // Imagick fonctionne si le site est déployé, ne fonctionne pas en local
-
                     if($this->isMobileImage($image)) {
                         $image->trimImage(0);
                     }
-    
                     $compressionQuality = 80; // Qualité de compression (entre 0 et 100)
                     $image->setImageCompressionQuality($compressionQuality);
     
@@ -176,13 +159,12 @@ class Controller_user extends Controller
                 $oldImageName = $m->get_profile_picture($user_id);
 
                 var_dump($oldImageName);
-                
 
-                // Delete old image if exists
+                // Efface l'ancienne image si elle existe
                 if($oldImageName !== null && $oldImageName !== 'noprofile.png' && file_exists('Public/img/user/' . $oldImageName)) {
                     unlink('Public/img/user/' . $oldImageName);
                 }
-
+                // Nouveau nom selon nos critères
                 $newImageName = $nom."_".date('Y.m.d')."_".date('h.i.sa');
                 $newImageName.=".".$imageExtension;
                 $m=User::get_model();
@@ -195,9 +177,7 @@ class Controller_user extends Controller
                     document.location.href = '?controller=user&action=user_profile'
                 </script>
                 ";
-
-            }
-            
+            }   
         }
     }
     private function isMobileImage($image) {

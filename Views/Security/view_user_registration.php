@@ -3,7 +3,7 @@
     <h1 class= "text-center">Inscription</h1>
       <form id="registration-form" action="?controller=security&action=user_registration_valid" method="post" >
         <div class="input-group mb-3">
-          <span class="input-group-text"><i class="fa fa-user"></i></span>   
+          <span class="input-group-text"><i class="fa fa-user"></i></span>  
           <input  type="text" class="form-control" name="nom" placeholder="Entrer votre Nom"required>    
         </div>
         <div class="input-group mb-3">

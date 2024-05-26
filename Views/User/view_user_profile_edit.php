@@ -1,6 +1,6 @@
 
 <?php
-var_dump($user)
+// var_dump($user)
 ?>
 <div class="container py-5">
     <div class="main-body">

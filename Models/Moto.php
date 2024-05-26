@@ -188,15 +188,15 @@ class Moto extends Model
 
     public function get_moto_update_request()
     {
-
         try {
             $bagagerie = isset($_POST['bagagerie']) ? 1 : 0;
             $dispo = isset($_POST['dispo']) ? 1 : 0;
 
-
             $requete = $this->bd->prepare('UPDATE moto SET modele_id = :mod, annee = :annee, 
-                                           couleur = :coul, prix_jour = :pj, description = :des, bagagerie = :bag, adresse_moto = :adr, 
-                                           code_postal_moto = :cp, ville_moto = :vil, cylindree = :cyl, poids = :poi, 
+                                           couleur = :coul, prix_jour = :pj, description = :des, 
+                                           bagagerie = :bag, adresse_moto = :adr, 
+                                           code_postal_moto = :cp, ville_moto = :vil, 
+                                           cylindree = :cyl, poids = :poi, 
                                            puissance = :pui, dispo = :dispo
                                            WHERE moto_id = :mid
                                            ');
@@ -215,7 +215,6 @@ class Moto extends Model
                                     ':pui' => $_POST['puissance'],
                                     ':dispo' => $dispo
                                     ));
-            
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }

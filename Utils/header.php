@@ -17,7 +17,7 @@ session_start();
   <!-- ------------------------------- stylesheets ------------------------------ -->
   <link rel="stylesheet" href="./Content/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- ------------------------------ libraries scripts  --------------------------- -->
@@ -31,7 +31,7 @@ session_start();
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 
   <!-- ------------------------------- scripts ------------------------------ -->
-  <script type="module" src="./Content/js/script.js" defer></script>
+  <script src="./Content/js/script.js" defer></script>
   <script src="./Content/js/login_form_verify.js" defer></script>
   <script src="./Content/js/registration_form_verify.js" defer></script> 
   <script src="./Content/js/form-preresa.js" defer></script> 
@@ -55,12 +55,12 @@ session_start();
               if (isset($_SESSION["email"])) 
               { echo 
                 '
-                <a href="?controller=moto&action=all_motos" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
+                <a href="?controller=moto&action=all_motos" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo du site"></a>
               ';
               } else  {
                 echo 
                 '
-                <a href="?controller=home&action=home" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo.png"></a>
+                <a href="?controller=home&action=home" class="href"><img class="logo" src="./Content/img/site/logo.png" alt="logo du site"></a>
                 ';
               }
               ?>
@@ -95,10 +95,10 @@ session_start();
             echo 
                       '
                       <ul class="navbar-nav ms-5 me-auto mb-lg-0">
-                        <a href="?controller=home&action=faq"><li class="nav-item">Des questions ?</li></a>
+                        <li class="nav-item"><a href="?controller=home&action=faq">Des questions ?</a></li>
                       </ul>
                       <ul class="nav-item me-3 mb-2 mb-lg-0">
-                        <a href="?controller=security&action=user_connection" ><button type="button" class="btn btn-louer">Louer ma moto</button></a>
+                        <li><a href="?controller=security&action=user_connection" class="btn btn-louer">Louer ma moto</a></li>
                       </ul>
                       ';
           }
@@ -110,6 +110,3 @@ session_start();
 
 
   </header>
-</body>
-
-</html>
