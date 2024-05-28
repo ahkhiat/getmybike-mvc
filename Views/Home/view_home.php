@@ -8,9 +8,9 @@
 
 <div id="conteneur_slider">
 <?php if(isset($_SESSION['nom'])) :?>
-    <a href="?controller=moto&action=all_motos"><button type= "button" class="btn btn-warning" id="bouton_acceuil">Prenez la route</button></a>
+    <a href="?controller=moto&action=all_motos" class="btn btn-warning" id="bouton_acceuil">Prenez la route</a>
 <?php else : ?>
-    <a href="?controller=security&action=user_connection"><button type= "button" class="btn btn-louer-mobile" id="bouton_acceuil">Louer ma moto</button></a>
+    <a href="?controller=security&action=user_connection" class="btn btn-louer-mobile" id="bouton_acceuil">Louer ma moto</a>
 <?php endif ?>
 </div>
 

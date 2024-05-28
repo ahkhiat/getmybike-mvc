@@ -1,5 +1,5 @@
 <?php
-var_dump($moto);
+// var_dump($moto);
 ?>
 <div id="moto_update_container">
 
