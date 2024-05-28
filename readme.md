@@ -1,54 +1,110 @@
-# Application Get My Bike
+#  Get My Bike Application
+Initialized on May 2024, the 06th
 
-Application initialisée le 06 mai 2024 suite changement de framework.
+GetMyBike is an application developed in PHP following an MVC architecture without any framework.
+Database is in mySQL.
 
-Le 7 mai, on continue de dev sur le macbook
+GetMyBike is a peer-to-peer motorcycle rental platform that allows owners to generate income by renting out their unused motorcycles and provides users with a convenient and efficient way to find and rent motorcycles.
 
-8 mai depart du bateau 8h00
+## Table of Contents
 
-liste des devs:
+- [Context and Objectives](#context-and-objectives)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation and Configuration](#installation-and-configuration)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Project Management](#project-management)
+- [Contributions](#contributions)
+- [License](#license)
 
-- register securisé avec password hash
-- login
-- changement des cards moto, plus simples
+## Context and Objectives
 
-- changement chemin des images user/
-- affichage age sur profile public
-- gestion image sur profil user
-- photo sur profil public
+### Context
 
-- suppression user_id dans Commentaire (redondance)
+In the current context where many people want to save on vehicle ownership, GetMyBike offers a solution for renting motorcycles between individuals. Inspired by platforms like Ouicar and Getaround, GetMyBike provides a unique experience combining a passion for riding, sharing, and adventure.
 
-- moyenne note moto ok 
-- nbr note moto ok 
-- nbr notes user ok
-- moy notes user ok
+### Objectives
 
-- notes sur profil public ok
-- affichage du nombre de motos d'un proprio
-- affichage du nombre de resas passées d'un proprio
-- affichage du nombre de commentaires reçus par un proprio
-- affichage des commentaires avec leur date sur fiche moto
-- affichage des commentaires sur profil user public
-- formulaire pour reservation dans une modal sur fiche moto
-- gestion d'image sur fiche update moto 
+- Provide a motorcycle reservation platform.
+- Enable owners to generate income by renting out their unused motorcycles.
+- Offer users a convenient and efficient way to find, reserve, and rent motorcycles.
 
-- bouton pour devenir proprietaire
-- formulaire pour enregistrer moto
-- les motos s'affichent sur le profil user sous forme de cards
+## Features
 
-- creation d'une table Like (sans id)
-- bouton like qui lie un user à une moto 
-- page pour moto favorites
+- **Home Page**: Introduction to the platform.
+- **Motorcycle Catalog**: List of available motorcycles.
+- **Detailed Motorcycle Pages**: Photos, technical specifications, descriptions, availability calendar, etc.
+- **User Account Management**: Create and manage accounts for both owners and renters with profile picture management.
+- **Reservation System**: Real-time booking process with instant confirmation.
+- **Rating and Reviews**: Users can leave ratings and reviews for motorcycles and owners.
+- **Favorites**: Users can add motorcycles to their favorites.
+- **Notifications**: Notifications for bookings and reviews.
 
-- affichage d'un calendrier sur fiche moto qui indique les jours reservés
-- création d'une page "mes reservations" qui affiche toutes les resas
-    sous forme de cards. 
-- creation d'un commentaire avec un formulaire sous forme de modal sur les fiches
-    reservations.
+## Technologies Used
 
-- ajout bouton delete sur fiches moto
+- **Front-end**: HTML, CSS, JavaScript, Bootstrap
+- **Back-end**: PHP, SQL
+- **Database**: MySQL
+- **Version Control**: Git, GitHub
+- **Project Management**: Notion, Google Drive
+- **Design and Prototyping**: Figma, Lucidchart, Canva
 
+## Installation and Configuration
 
-Le 12 mai, retour sur le continent.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/getmybike.git
+    cd getmybike
+    ```
+
+2. **Set up the environment**:
+    - Install XAMPP or any local server environment with PHP and MySQL support.
+    - Start Apache and MySQL services.
+
+3. **Database Configuration**:
+    - Create a MySQL database named `getmybike`.
+    - Import the SQL file provided in the repository to set up the database schema.
+    - Update the database configuration in the project files (usually found in the `config` directory).
+
+4. **Start the Application**:
+    - Place the project files in the `htdocs` directory of your XAMPP installation.
+    - Open your browser and navigate to `http://localhost/getmybike`.
+
+## Usage
+
+- **Register** as a user to access all features.
+- **List your motorcycle**: Owners can list their motorcycles by providing details and availability.
+- **Book a motorcycle**: Renters can browse available motorcycles, check details, and make a reservation.
+- **Rate and review**: After a rental, users can leave ratings and reviews for the motorcycle and the owner.
+
+## Deployment
+
+The project is deployed on Hostinger for private learning purposes. To deploy:
+
+1. **Upload the Code**:
+    - Use Hostinger's Git integration to upload your code from GitHub.
+    - Specify the branch and directory for deployment.
+
+2. **Database Setup**:
+    - Create a new database in Hostinger's control panel.
+    - Import the database schema and initial data from your local development environment.
+
+3. **Configure Environment Variables**:
+    - Update the database connection settings in your project to match the Hostinger configuration.
+
+## Project Management
+
+- **Agile Methodology**: Used for flexibility and adaptability.
+- **Kanban Board**: Managed with Notion for clear visual tracking of project progress.
+- **Code Versioning**: GitHub for version control and collaboration.
+
+## Contributions
+
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or new features.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
 
