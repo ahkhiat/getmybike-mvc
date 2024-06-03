@@ -94,12 +94,10 @@ a {
 @media screen and (min-width: 576px) {
 
 #home_container{
-  /* border: 5px solid green; */
   width: 100%;
   height: 100vh;
   background-image: url('/getmybike-mvc/Content/img/site/home/moto_home.png') !important;
   background-repeat: no-repeat;
-
 }
 
 .card-img-top {
@@ -115,11 +113,9 @@ a {
 }
 
 #conteneur_slider{
-  
   position:absolute;
   top: 60vh;
   left: 60vw;
-  
   }
 
 /* ------------------ map Google ---------------------- */
@@ -161,11 +157,9 @@ a {
   }
   
   #conteneur_slider{
-  
     position:absolute;
     top: 60vh;
     left: 60vw;
-    
     }
   
   /* -------------------- map Google --------------------- */

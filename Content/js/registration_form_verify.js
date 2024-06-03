@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(registrationContainer)
     {
         /* ---------------------------- Targeting messages containers ---------------------------- */
-        let groupForm = document.getElementById("registration-form");
+        let groupForm = document.querySelector("#registration-form");
 
         let input = groupForm.password;
         let caractere = document.querySelector(".caractere");
@@ -26,10 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if(!this.value){
                 remove();
             }
-        }) 
-        
+        })      
         function validation(password){
-            
             if(password.value.length >= 11){
                 generique.classList.remove("error");
                 generique.classList.add("succes");
@@ -38,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 generique.classList.add("error");
                 generique.classList.remove("succes");
             }
-        
             if(uppercaseRegex.test(password.value)){
                 input.classList.remove("invalide");
                 majuscule.classList.remove("error");
@@ -53,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 input.classList.add("invalide");
                 majuscule.classList.add("error");
             }
-        
             if(lowercaseRegex.test(password.value)){
                 input.classList.remove("invalide");
                 minuscule.classList.remove("error");
