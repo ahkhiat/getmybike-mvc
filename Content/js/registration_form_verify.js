@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(registrationContainer)
     {
         /* ---------------------------- Targeting messages containers ---------------------------- */
-        let groupForm = document.getElementById("registration-form");
+        let groupForm = document.querySelector("#registration-form");
 
         let input = groupForm.password;
         let caractere = document.querySelector(".caractere");
@@ -23,13 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         input.addEventListener("input", function(){
             validation(this);
         
-            if(!this.value){
-                remove();
-            }
-        }) 
-        
+        })      
         function validation(password){
-            
             if(password.value.length >= 11){
                 generique.classList.remove("error");
                 generique.classList.add("succes");
@@ -38,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 generique.classList.add("error");
                 generique.classList.remove("succes");
             }
-        
             if(uppercaseRegex.test(password.value)){
                 input.classList.remove("invalide");
                 majuscule.classList.remove("error");
@@ -53,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 input.classList.add("invalide");
                 majuscule.classList.add("error");
             }
-        
             if(lowercaseRegex.test(password.value)){
                 input.classList.remove("invalide");
                 minuscule.classList.remove("error");
@@ -99,33 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 chiffre.classList.add("error");
             }
         } 
-
-        function remove(){
-        
-            input.classList.remove("invalide");
-            input.classList.remove("succes");
-        
-            caractere.classList.remove("error");
-            caractere.classList.remove("succes");
-        
-            majuscule.classList.remove("succes");
-            majuscule.classList.remove("error");
-        
-            minuscule.classList.remove("succes");
-            minuscule.classList.remove("error")
-        
-            generique.classList.remove("succes")
-            generique.classList.remove("error");
-
-            chiffre.classList.remove("succes")
-            chiffre.classList.remove("error");
-
-        } 
-
-    
-
-
-
         
         // .......Hide and show password.................
         const passwordInput = document.getElementById('current-password');

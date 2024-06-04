@@ -40,9 +40,10 @@ class Reservation extends Model
     }
     public function get_reservations_mes_motos($user_id)
     {
-
         try {
-            $requete = $this->bd->prepare('SELECT r.reservation_id, r.user_id, md.modele_libelle, mq.marque_libelle, r.date_debut, r.date_fin, u.nom, u.prenom, m.moto_image_name, u.user_id
+            $requete = $this->bd->prepare('SELECT r.reservation_id, r.user_id, md.modele_libelle, 
+                                                  mq.marque_libelle, r.date_debut, r.date_fin, 
+                                                  u.nom, u.prenom, m.moto_image_name, u.user_id
                                            FROM reservation r
                                            JOIN moto m ON r.moto_id = m.moto_id
                                            JOIN proprietaire p ON m.proprietaire_id = p.proprietaire_id
@@ -51,15 +52,13 @@ class Reservation extends Model
                                            JOIN user u ON r.user_id = u.user_id
                                            WHERE p.user_id = :id
                                            ');
-            $requete->execute(array(
-                                    'id'=> $user_id,
-                                    ));
-            
+            $requete->execute(array('id'=> $user_id));
+            return $requete->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
-        return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function get_mes_reservations($user_id)
     {
 
