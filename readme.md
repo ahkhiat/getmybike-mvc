@@ -106,12 +106,3 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
-
-<<<<<<< HEAD
-=======
-Le 12 mai, retour sur le continent.
-
-25 mai essais deploiement depuis Git
-
->>>>>>> 5b3237643f11b9aedee96ad832e380667d230e6d

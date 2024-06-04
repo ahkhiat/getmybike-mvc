@@ -159,7 +159,6 @@ class Commentaire extends Model
 
     public function set_commentaire_add($reservation_id)
     {
-
         try {
             $requete = $this->bd->prepare('INSERT INTO commentaire (commentaire_id, reservation_id, note_moto, texte_moto,
                                            note_proprio, texte_proprio) VALUES (NULL, :rid, :notem, :textm, :notep, :textp)
