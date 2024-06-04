@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         input.addEventListener("input", function(){
             validation(this);
         
-            if(!this.value){
-                remove();
-            }
         })      
         function validation(password){
             if(password.value.length >= 11){
@@ -95,33 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 chiffre.classList.add("error");
             }
         } 
-
-        function remove(){
-        
-            input.classList.remove("invalide");
-            input.classList.remove("succes");
-        
-            caractere.classList.remove("error");
-            caractere.classList.remove("succes");
-        
-            majuscule.classList.remove("succes");
-            majuscule.classList.remove("error");
-        
-            minuscule.classList.remove("succes");
-            minuscule.classList.remove("error")
-        
-            generique.classList.remove("succes")
-            generique.classList.remove("error");
-
-            chiffre.classList.remove("succes")
-            chiffre.classList.remove("error");
-
-        } 
-
-    
-
-
-
         
         // .......Hide and show password.................
         const passwordInput = document.getElementById('current-password');
