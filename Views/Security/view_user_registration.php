@@ -25,7 +25,7 @@
           <button type="submit" name="submit_registration" class="btn btn-primary">Envoyer</button>
         </div>
         <div class="validator-criters">
-          <span class="generique"><i class="far fa-check-circle"></i> &nbsp;Votre mot doit comporter 11 Caractères au minimum</span>
+          <span class="generique"><i class="far fa-check-circle"></i> &nbsp;Votre mot doit comporter 13 Caractères au minimum</span>
           <span class="majuscule"><i class="far fa-check-circle"></i> &nbsp;Votre mot de passe doit avoir 1 lettre majuscule</span>
           <span class="minuscule"><i class="far fa-check-circle"></i> &nbsp;Votre mot de passe doit avoir 1 lettre minuscule</span>
           <span class="caractere"><i class="far fa-check-circle"></i> &nbsp;Votre mot de passe doit avoir 1 caracter spécial</span>

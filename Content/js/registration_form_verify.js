@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         })      
         function validation(password){
-            if(password.value.length >= 11){
+            if(password.value.length >= 13){
                 generique.classList.remove("error");
                 generique.classList.add("succes");
             }
