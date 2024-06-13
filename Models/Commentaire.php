@@ -22,7 +22,7 @@ class Commentaire extends Model
 
     public function get_commentaires_recus_moto($moto_id)
     {
-
+        // function called to get all received comments for a moto
         try {
             $requete = $this->bd->prepare('SELECT c.commentaire_id, c.note_moto, c.texte_moto, c.note_proprio, 
                                            c.texte_proprio, u.nom, u.prenom, u.image_name, c.created_at, u.user_id
@@ -40,7 +40,7 @@ class Commentaire extends Model
     }
     public function get_moy_notes_recues_moto($moto_id)
     {
-
+        // calculate the average rating for a moto
         try {
             $requete = $this->bd->prepare('SELECT ROUND((SUM(note_moto)/COUNT(note_moto)), 2) AS moyenne
                                            FROM commentaire c 
@@ -58,7 +58,7 @@ class Commentaire extends Model
     }
     public function get_nbr_notes_recues_moto($moto_id)
     {
-
+        // count the number of ratings for a moto
         try {
             $requete = $this->bd->prepare('SELECT COUNT(note_moto) AS nbr_notes
                                            FROM commentaire c 
@@ -73,9 +73,10 @@ class Commentaire extends Model
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function get_commentaires_recus_user($user_id)
     {
-
+        // get all received comments for a user
         try {
             $requete = $this->bd->prepare('SELECT c.commentaire_id, c.note_moto, c.texte_moto, c.note_proprio, 
                                            c.texte_proprio, us.nom, us.prenom, us.image_name, c.created_at, us.user_id
@@ -96,7 +97,7 @@ class Commentaire extends Model
     }
     public function get_nbr_commentaires_recus_user($user_id)
     {
-
+        // count all the received comments for a user
         try {
             $requete = $this->bd->prepare('SELECT COUNT(c.commentaire_id)
                                            FROM commentaire c
@@ -117,7 +118,7 @@ class Commentaire extends Model
     }
     public function get_moy_notes_recues_user($user_id)
     {
-
+        // calculate the average rating for a user
         try {
             $requete = $this->bd->prepare('SELECT ROUND((SUM(note_proprio)/COUNT(note_proprio)), 2) AS moyenne
                                            FROM commentaire c 
@@ -138,7 +139,7 @@ class Commentaire extends Model
     }
     public function get_nbr_notes_recues_user($user_id)
     {
-
+        // count number of ratings for a user
         try {
             $requete = $this->bd->prepare('SELECT COUNT(note_proprio) AS nbr_notes
                                            FROM commentaire c 
@@ -178,6 +179,7 @@ class Commentaire extends Model
 
     public function is_commentaire_exists($reservation_id)
     {
+        // function called to know if a comment exists or not
         try {
             $requete = $this->bd->prepare('SELECT COUNT(*) 
                                            FROM commentaire 
@@ -200,6 +202,7 @@ class Commentaire extends Model
 
     public function is_reservation_sans_commentaire($user_id)
     {
+        // check if a reservation has been commented
         try {
             $requete = $this->bd->prepare('SELECT COUNT(*) 
                                            FROM reservation r 

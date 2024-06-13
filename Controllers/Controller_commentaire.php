@@ -7,11 +7,6 @@ class Controller_commentaire extends Controller
         $this->action_home();
     }
 
-    // public function action_home()
-    // {
-    //     $this->render('home');
-    // }
-
     public function action_commentaire_add()
     {
         $reservation_id = $_POST['reservation_id'];

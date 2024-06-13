@@ -21,7 +21,7 @@ class Reservation extends Model
     }
     public function get_nbr_reservations($user_id)
     {
-
+        // function called to count how many reervations has a user
         try {
             $requete = $this->bd->prepare('SELECT COUNT(reservation_id) AS nbr_reservations
                                            FROM reservation r
@@ -40,6 +40,7 @@ class Reservation extends Model
     }
     public function get_reservations_mes_motos($user_id)
     {
+        // function called to find all reservations of a moto for a user
         try {
             $requete = $this->bd->prepare('SELECT r.reservation_id, r.user_id, md.modele_libelle, 
                                                   mq.marque_libelle, r.date_debut, r.date_fin, 

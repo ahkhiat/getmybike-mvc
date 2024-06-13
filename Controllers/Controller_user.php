@@ -36,13 +36,8 @@ class Controller_user extends Controller
                'motos'=>$mt->get_all_motos_user(),
                'nbr_motos'=>$m->get_nombre_motos_user($user_id),
                'nbr_reservations'=>$mr->get_nbr_reservations($user_id),
-        //        'age'=>$mu->get_age($user_id),
-        //        'nbr_motos'=>$mu->get_nombre_motos_user($user_id),
                'commentaires'=>$mc->get_commentaires_recus_user($user_id),
                'nbr_commentaires'=>$mc->get_nbr_commentaires_recus_user($user_id),
-        //    //     'followers'=>$m->get_followers_number_public(),
-        //    //    'followed'=>$m->get_followed_number_public(),
-        //    //    'isFollowing'=>$m->get_is_following()
                'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
                'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id)
             ];
@@ -80,10 +75,6 @@ class Controller_user extends Controller
                 'nbr_motos'=>$mu->get_nombre_motos_user($user_id),
                 'commentaires'=>$mc->get_commentaires_recus_user($user_id),
                 'is_proprietaire'=>$mu->get_is_proprietaire($user_id),
-
-            //     'followers'=>$m->get_followers_number_public(),
-            //    'followed'=>$m->get_followed_number_public(),
-            //    'isFollowing'=>$m->get_is_following()
                 'moy_notes_user'=>$mc->get_moy_notes_recues_user($user_id),
                 'nbr_notes_user'=>$mc->get_nbr_notes_recues_user($user_id)
             ];

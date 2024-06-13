@@ -21,9 +21,10 @@ class Moto extends Model
     }
     public function get_all_motos()
     {
-
+        // function called on the all motos page 
         try {
-            $requete = $this->bd->prepare('SELECT * 
+            $requete = $this->bd->prepare('SELECT mt.moto_id, mt.ville_moto, mt.prix_jour, mt.moto_image_name,
+                                                  md.modele_libelle, mq.marque_libelle, u.ville
                                            FROM moto mt
                                            JOIN modele md ON mt.modele_id = md.modele_id
                                            JOIN marque mq ON md.marque_id = mq.marque_id
@@ -40,9 +41,11 @@ class Moto extends Model
    
     public function get_moto_show($moto_id)
     {
-
+        // function called on a single moto page
         try {
-            $requete = $this->bd->prepare('SELECT * 
+            $requete = $this->bd->prepare('SELECT mt.moto_id, mt.ville_moto, mt.prix_jour, mt.moto_image_name,
+                                                  md.modele_libelle, mq.marque_libelle, u.ville, u.image_name,
+                                                  u.nom, u.prenom, mt.description, mt.cylindree, mt.poids, mt.puissance
                                            FROM moto mt
                                            JOIN modele md ON mt.modele_id = md.modele_id
                                            JOIN marque mq ON md.marque_id = mq.marque_id
@@ -72,10 +75,11 @@ class Moto extends Model
 
     public function get_all_motos_user()
     {
-
+        // function called on a user profil to show all his motos with notes & comments
         try {
 
-            $requete = $this->bd->prepare('SELECT *, 
+            $requete = $this->bd->prepare('SELECT mt.moto_id, mt.ville_moto, mt.prix_jour, mt.moto_image_name,
+                                                  md.modele_libelle, mq.marque_libelle, u.ville, mt.dispo,
                                         (SELECT ROUND((SUM(note_moto)/COUNT(note_moto)), 2) AS moyenne 
                                             FROM commentaire c 
                                             JOIN reservation r ON c.reservation_id = r.reservation_id 
@@ -101,7 +105,7 @@ class Moto extends Model
 
     public function get_user_id()
     {
-
+        // function to get the id of a moto owner
         try {
             $requete = $this->bd->prepare('SELECT p.user_id 
                                            FROM moto mt
@@ -155,9 +159,10 @@ class Moto extends Model
     // }
     public function set_moto_add_request()
     {
+        // function called to add a moto 
         $bagagerie = isset($_POST['bagagerie']) && $_POST['bagagerie'] === 'on';
 
-        try { // a faire
+        try { 
             $requete = $this->bd->prepare('INSERT INTO moto (moto_id, proprietaire_id, modele_id, annee, 
                                            couleur, prix_jour, description, bagagerie, adresse_moto, 
                                            code_postal_moto, ville_moto, cylindree, poids, puissance, dispo) 
@@ -273,15 +278,16 @@ class Moto extends Model
     }
     public function get_is_favori($moto_id)
     {
+        // function called to know if a moto is liked or not 
         try {
-            
+            // the SQL request counts matches between user and moto and return 0 or 1
             $requete = $this->bd->prepare('SELECT COUNT(*) FROM favori WHERE user_id = :usid AND moto_id = :mid');
             $requete->execute(array(':usid' => $_SESSION['id'], ':mid' => $moto_id));
             $count = $requete->fetchColumn();
             if ($count > 0) {
-                return 1; // quand la moto est likée
+                return 1; // when moto is liked
             } else {
-                return 0; // quand la moto n'est pas likée
+                return 0; // when moto is not liked
             }
         } catch (PDOException $e) {
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
