@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
+  // Same for the moto picture
   if(motoContainer) {
     console.log('moto update')
     document.querySelector("#img_input").onchange = function() {
